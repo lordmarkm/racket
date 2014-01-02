@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>racket</artifactId>
+    <groupId>racket</groupId>
+    <version>1.0</version>
+    <relativePath>..</relativePath>
+  </parent>
+  <groupId>racket-security</groupId>
+  <artifactId>racket-security</artifactId>
+  <name>Racket :: Security</name>
+  
+  <dependencies>
+  
+    <dependency>
+      <groupId>baldy.commons.security</groupId>
+      <artifactId>baldy-commons-security-services</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  
+  </dependencies>
+  
+</project>
