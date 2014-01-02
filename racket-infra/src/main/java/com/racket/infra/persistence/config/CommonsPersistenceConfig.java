@@ -1,4 +1,4 @@
-package com.racket.commons.services;
+package com.racket.infra.persistence.config;
 
 import java.util.Properties;
 
