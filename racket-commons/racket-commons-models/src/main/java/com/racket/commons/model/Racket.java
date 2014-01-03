@@ -1,20 +1,15 @@
 package com.racket.commons.model;
 
-import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.baldy.commons.models.Commodity;
 
-@Entity
-@Table(name = Racket.table)
-public class Racket {
+/**
+ * @author mbmartinez
+ */
+public interface Racket {
 
-    public static final String table = "racket";
-
-    private long id;
-
-    private Racketeer racketeer;
-
-    private List<RacketAssociation> associations;
+    public Racketeer getRacketeer();
+    public Set<Commodity> getCommodities();
 
 }

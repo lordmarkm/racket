@@ -6,6 +6,6 @@ public class RacketGroup {
 
     private Racketeer author;
 
-    private List<Racket> rackets;
+    private List<RentalRacket> rackets;
 
 }
