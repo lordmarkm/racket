@@ -1,6 +1,6 @@
 package com.racket.security.services;
 
-import baldy.commons.security.models.Account;
+import com.baldy.commons.security.models.Account;
 
 /**
  * @author mbmartinez

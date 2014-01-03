@@ -4,10 +4,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import baldy.commons.security.models.Account;
-import baldy.commons.security.services.AccountService;
-import baldy.commons.security.services.Roles;
 
+import com.baldy.commons.security.models.Account;
+import com.baldy.commons.security.services.AccountService;
+import com.baldy.commons.security.services.Roles;
 import com.racket.security.services.RegistrationService;
 
 @Service

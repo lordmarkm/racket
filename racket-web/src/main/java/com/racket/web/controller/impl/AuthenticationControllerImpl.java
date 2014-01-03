@@ -10,12 +10,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.baldy.commons.security.services.AccountService;
+import com.baldy.commons.web.controller.GenericController;
+import com.baldy.commons.web.dto.JSON;
+import com.racket.security.services.RegistrationService;
 import com.racket.web.controller.AuthenticationController;
 import com.racket.web.dto.AccountForm;
 
-import baldy.commons.security.services.AccountService;
-import baldy.commons.web.controller.GenericController;
-import baldy.commons.web.dto.JSON;
 
 @Component
 public class AuthenticationControllerImpl extends GenericController implements AuthenticationController {
@@ -41,7 +42,10 @@ public class AuthenticationControllerImpl extends GenericController implements A
 
     @Override
     public ModelAndView register() {
-        return mav("register")
+        
+        log.debug("Registration request received. Returning registration form.");
+        
+        return mav("authentication/register")
                 .addObject("form", new AccountForm());
     }
 
@@ -67,11 +71,9 @@ public class AuthenticationControllerImpl extends GenericController implements A
         if(!password.equals(confirmPw)) {
             return JSON.error("Passwords must match.");
         }
-        
-        String email = form.getEmail();
-        
-        reg.register(username, password, email);
-        
+
+        reg.register(username, password);
+
         return JSON.ok();
     }
 

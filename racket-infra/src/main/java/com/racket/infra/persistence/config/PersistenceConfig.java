@@ -60,7 +60,8 @@ public class PersistenceConfig {
     public EntityManagerFactory entityManagerFactory() throws Exception {
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactory.setDataSource(dataSource());
-        entityManagerFactory.setPackagesToScan(new String[] { "baldy.commons.models", "baldy.commons.security.models", "com.racket.commons.models" });
+        entityManagerFactory.setPackagesToScan(new String[] { "com.baldy.commons.models", 
+                "com.baldy.commons.security.models", "com.racket.commons.models" });
         entityManagerFactory.setPersistenceProvider(new HibernatePersistence());
         entityManagerFactory.setJpaProperties(hibernateProperties());
         entityManagerFactory.afterPropertiesSet();

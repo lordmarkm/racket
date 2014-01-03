@@ -7,7 +7,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @PropertySource("classpath:db.properties")
-@EnableJpaRepositories(basePackages="baldy.commons.security.services", repositoryImplementationPostfix="CustomImpl")
+@EnableJpaRepositories(basePackages="com.baldy.commons.security.services",
+    repositoryImplementationPostfix="CustomImpl")
 @EnableTransactionManagement
 public class RacketSecurityPersistenceConfig {
 

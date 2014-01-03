@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"baldy.commons.web.config", "com.racket.web"})
+@ComponentScan(basePackages = {"com.baldy.commons.web.config", "com.racket.web"})
 @PropertySource({"classpath:app.properties", "classpath:mvc.properties"})
 @EnableAspectJAutoProxy
 public class WebConfig extends WebMvcConfigurerAdapter {

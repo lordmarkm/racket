@@ -17,8 +17,8 @@ import org.springframework.security.crypto.encrypt.TextEncryptor;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import baldy.commons.security.services.Roles;
 
+import com.baldy.commons.security.services.Roles;
 import com.racket.security.services.RacketUserDetailsService;
 
 

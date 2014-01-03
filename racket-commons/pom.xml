@@ -16,5 +16,6 @@
 
   <modules>
   	<module>racket-commons-services</module>
+  	<module>racket-commons-models</module>
   </modules>
 </project>

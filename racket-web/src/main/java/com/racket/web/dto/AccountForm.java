@@ -2,13 +2,17 @@ package com.racket.web.dto;
 
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.core.style.ToStringCreator;
 
-import com.mtg.security.models.Account;
+import com.baldy.commons.security.models.Account;
 
+
+
+/**
+ * @author mbmartinez
+ */
 public class AccountForm {
 
 	private Long id;
@@ -25,10 +29,6 @@ public class AccountForm {
 	@NotEmpty(message = "Confirm password is required")
 	private String confirmpw;
 
-	@NotEmpty(message = "Email can't be null")
-	@Email(message = "Invalid email address")
-	private String email;
-	
 	public AccountForm() {
 		//
 	}
@@ -85,13 +85,5 @@ public class AccountForm {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
 }
