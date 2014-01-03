@@ -5,10 +5,10 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.racket.infra.persistence.config.CommonsPersistenceConfig;
+import com.racket.infra.persistence.config.PersistenceConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {PersistenceConfig.class, CommonsPersistenceConfig.class})
+@ContextConfiguration(classes = {PersistenceConfig.class, PersistenceConfig.class})
 public class TestPersistenceConfig {
 
     @Test

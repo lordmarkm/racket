@@ -25,7 +25,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  */
 @Configuration
 @PropertySource({"classpath:db.properties"})
-public class CommonsPersistenceConfig {
+public class PersistenceConfig {
 
     @Resource
     private Environment env;

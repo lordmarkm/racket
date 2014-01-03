@@ -17,9 +17,9 @@ import org.springframework.security.crypto.encrypt.TextEncryptor;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.racket.security.services.RacketUserDetailsService;
-
 import baldy.commons.security.services.Roles;
+
+import com.racket.security.services.RacketUserDetailsService;
 
 
 /**
@@ -27,9 +27,8 @@ import baldy.commons.security.services.Roles;
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled=true)
 @ComponentScan("com.racket.security")
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class RacketSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Resource
 	private RacketUserDetailsService userDetailsService;
