@@ -3,25 +3,35 @@ package com.racket.web.controller.impl;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.joda.time.DateTime;
+import org.jsoup.helper.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.baldy.commons.security.models.Account;
 import com.baldy.commons.security.services.AccountService;
 import com.baldy.commons.web.controller.GenericController;
-import com.baldy.commons.web.dto.JSON;
+import com.racket.commons.models.AccountInfo;
+import com.racket.commons.models.Racketeer;
+import com.racket.commons.services.RacketeerService;
 import com.racket.security.services.RegistrationService;
 import com.racket.web.controller.AuthenticationController;
 import com.racket.web.dto.AccountForm;
+import com.racket.web.validator.AccountFormValidator;
 
 
 @Component
 public class AuthenticationControllerImpl extends GenericController implements AuthenticationController {
 
-    static Logger log = LoggerFactory.getLogger(AuthenticationControllerImpl.class);
+    private static Logger log = LoggerFactory.getLogger(AuthenticationControllerImpl.class);
 
     @Resource
     private RegistrationService reg;
@@ -29,52 +39,72 @@ public class AuthenticationControllerImpl extends GenericController implements A
     @Resource
     private AccountService accounts;
 
-    @Override
-    public ModelAndView login() {
-    	return login(null);
-    }
+    @Resource
+    private RacketeerService racketeers;
 
+    @Resource
+    private AccountFormValidator validator;
+
+    @Resource
+    private MessageSource messages;
+    
     @Override
-    public ModelAndView login(@PathVariable String message) {
-        return mav("login")
-        		.addObject("message", message);
+    public ModelAndView login(@RequestParam(required = false, value = "message") String message, 
+    		@RequestParam(required = false, value = "error") String error) {
+        
+    	ModelAndView mav = mav("authentication/login");
+
+        if (null != message) {
+        	mav.addObject("message", messages.getMessage(message, null, null));
+        }
+
+        if (null != error) {
+        	mav.addObject("error", messages.getMessage(error, null, null));
+        }
+
+        return mav;
     }
 
     @Override
     public ModelAndView register() {
-        
-        log.debug("Registration request received. Returning registration form.");
-        
+    	log.debug("Registration request received. Returning registration form.");
         return mav("authentication/register")
                 .addObject("form", new AccountForm());
     }
 
-    //TODO put validation in a validator lol
     @Override
-    public JSON register(@Valid AccountForm form, BindingResult result) {
-        
-        log.info("Registration request received. form={}", form);
-        
+    public ModelAndView register(@Valid @ModelAttribute AccountForm form, BindingResult result) {
+
+    	log.info("Registration request received. form={}", form);
+
+    	log.info("Binding result={}", result);
+    	
+    	Validate.notNull(validator);
         if(result.hasErrors()) {
-            return JSON.error(result.getAllErrors().iterator().next().getDefaultMessage());
+        	return mav("authentication/register")
+        			.addObject("form", form)
+        			.addObject("error", firstError(result));
         }
-        
+
         String username = form.getUsername();
-        
-        if(accounts.findByUsername(username) != null) {
-            return JSON.error("Username " + username + " is already in use.");
-        }
-        
         String password = form.getPassword();
-        String confirmPw = form.getConfirmpw();
-        
-        if(!password.equals(confirmPw)) {
-            return JSON.error("Passwords must match.");
-        }
+        Account account = reg.register(username, password);
 
-        reg.register(username, password);
+        AccountInfo accountInfo = new AccountInfo();
+        accountInfo.setJoined(new DateTime());
 
-        return JSON.ok();
+        Racketeer racketeer = new Racketeer();
+        racketeer.setAccount(account);
+        racketeer.setAccountInfo(accountInfo);
+        racketeers.save(racketeer);
+
+        return redirect("/auth/login?status=login.reg.success");
+    }
+
+    @InitBinder
+	public void initBinder(WebDataBinder binder) {
+    	log.debug("Initbinder");
+    	binder.setValidator(validator);
     }
 
 }

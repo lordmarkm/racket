@@ -1,4 +1,4 @@
-package com.racket.commons.model;
+package com.racket.commons.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

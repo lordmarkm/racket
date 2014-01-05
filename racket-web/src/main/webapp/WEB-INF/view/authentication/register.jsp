@@ -1,12 +1,20 @@
 <#import "/spring.ftl" as spring /> 
+<#import "../templates/css.ftl" as css />
 
 <!DOCTYPE html>
 <html>
 
 <head>
   <title>Register</title>
+  <script src="<@spring.url '/javascript/require/r.js' />"></script>
+  <script src="<@spring.url '/javascript/authentication/register.js' />"></script>
+  <@css.css />
 </head>
 <body>
+
+<#if error??>
+  <div class="alert alert-error">${error }</div>
+</#if>
 
 <form id="registration-form" class="form-horizontal" action="<@spring.url '/auth/register' />" method="post">
   <fieldset>
@@ -15,25 +23,19 @@
     <div class="control-group">
       <label class="control-label" for="username">Username</label>
       <div class="controls">
-        <input type="text" name="username" />
-      </div>
-    </div>
-    <div class="control-group">
-      <label class="control-label" for="email">Email</label>
-      <div class="controls">
-        <input type="email" name="email" />
+        <input type="text" name="username" <#if form?? && form.username??>value="${form.username }"</#if> />
       </div>
     </div>
     <div class="control-group">
       <label class="control-label" for="password">Password</label>
       <div class="controls">
-        <input type="password" name="password" />
+        <input type="password" name="password" <#if form?? && form.password??>value="${form.password }"</#if> />
       </div>
     </div>
     <div class="control-group">
       <label class="control-label" for="password">Confirm Password</label>
       <div class="controls">
-        <input type="password" name="confirmpw" />
+        <input type="password" name="confirmpw" <#if form?? && form.confirmpw??>value="${form.confirmpw }"</#if> />
       </div>
     </div>
   </fieldset>

@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -18,6 +19,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableAspectJAutoProxy
 public class WebConfig extends WebMvcConfigurerAdapter {
 
+	//Message source
+    @Bean  
+    public ResourceBundleMessageSource messageSource() {  
+        ResourceBundleMessageSource source = new ResourceBundleMessageSource();  
+        source.setBasename("messages");  
+        source.setUseCodeAsDefaultMessage(true);  
+        return source;  
+    }  
+	
+	//Default validator
     @Bean
     public LocalValidatorFactoryBean defaultValidator() {
     	return new LocalValidatorFactoryBean();

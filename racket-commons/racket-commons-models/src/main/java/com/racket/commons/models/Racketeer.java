@@ -1,13 +1,15 @@
-package com.racket.commons.model;
+package com.racket.commons.models;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.baldy.commons.security.models.Account;
+import org.springframework.core.style.ToStringCreator;
 
+import com.baldy.commons.security.models.Account;
 
 
 /**
@@ -19,13 +21,25 @@ import com.baldy.commons.security.models.Account;
 public class Racketeer {
 
     public static final String table = "racketeer";
-    
-    @Column
+
+    @Id
+    @GeneratedValue
+    private long id;
+
+    @OneToOne(optional = false)
     private Account account;
 
     @OneToOne(cascade=CascadeType.ALL)
     private AccountInfo accountInfo;
 
+    public String toString() {
+    	return new ToStringCreator(this)
+    		.append("id", id)
+    		.append("account", account)
+    		.append("accountInfo", accountInfo)
+    		.toString();
+    }
+    
     public Account getAccount() {
         return account;
     }
@@ -41,5 +55,13 @@ public class Racketeer {
     public void setAccountInfo(AccountInfo accountInfo) {
         this.accountInfo = accountInfo;
     }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 }

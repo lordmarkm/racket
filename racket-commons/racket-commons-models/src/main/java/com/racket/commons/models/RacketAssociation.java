@@ -1,4 +1,4 @@
-package com.racket.commons.model;
+package com.racket.commons.models;
 
 /**
  * @author mbmartinez
@@ -7,7 +7,6 @@ package com.racket.commons.model;
 public class RacketAssociation {
 
     public Racketeer racketeer;
-
-    public Authority authority;
+    public RacketAuthority authority;
 
 }

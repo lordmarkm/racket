@@ -9,7 +9,7 @@
     <relativePath>..</relativePath>
   </parent>
 
-  <groupId>racket-commons</groupId>
+  <groupId>racket.commons</groupId>
   <artifactId>racket-commons</artifactId>
   <packaging>pom</packaging>
   <name>Racket :: Commons</name>
