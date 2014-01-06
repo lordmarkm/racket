@@ -77,7 +77,7 @@ public class RacketSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage("/auth/login")
 				.loginProcessingUrl("/login/authenticate")
 				.defaultSuccessUrl("/account/dashboard", true)
-				.failureUrl("/auth/login/bad_credentials")
+				.failureUrl("/auth/login?error=login.bad.credentials")
 				.permitAll()
 				.and()
 			.rememberMe()

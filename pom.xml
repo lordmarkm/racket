@@ -15,6 +15,7 @@
     <module>racket-commons</module>
     <module>racket-security</module>
     <module>racket-infra</module>
+    <module>racket-notifications</module>
   </modules>
 
   <properties>

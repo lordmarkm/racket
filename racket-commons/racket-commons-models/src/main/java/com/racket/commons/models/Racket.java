@@ -10,6 +10,7 @@ import com.baldy.commons.models.Commodity;
 public interface Racket {
 
     public Racketeer getRacketeer();
-    public Set<Commodity> getCommodities();
+    public Set<? extends Commodity> getCommodities();
+    public Set<RacketAssociation> getAssociations();
 
 }

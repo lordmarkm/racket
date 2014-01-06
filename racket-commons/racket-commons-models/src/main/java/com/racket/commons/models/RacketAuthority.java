@@ -1,5 +1,10 @@
 package com.racket.commons.models;
 
-public class RacketAuthority {
+/**
+ * @author mbmartinez
+ */
+public enum RacketAuthority {
+
+    ADMIN, CAN_UPDATE, READ_ONLY
 
 }
