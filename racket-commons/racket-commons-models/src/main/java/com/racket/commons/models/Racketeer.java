@@ -22,8 +22,7 @@ public class Racketeer {
 
     public static final String table = "racketeer";
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private long id;
 
     @OneToOne(optional = false)
