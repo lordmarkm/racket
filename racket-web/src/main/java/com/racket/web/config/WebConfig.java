@@ -44,6 +44,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/css/**").addResourceLocations("/css/");
         registry.addResourceHandler("/javascript/**").addResourceLocations("/javascript/");
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
+        registry.addResourceHandler("/modules/**").addResourceLocations("/modules/");
     }
 
     /**

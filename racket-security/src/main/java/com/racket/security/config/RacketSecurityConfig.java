@@ -50,7 +50,7 @@ public class RacketSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity builder) throws Exception {
 		builder
 			.ignoring()
-				.antMatchers("/css/**","/images/**","/javascript/**","/libs/**");
+				.antMatchers("/css/**","/images/**","/javascript/**","/libs/**","/modules/**");
 	}
 
 	@Override

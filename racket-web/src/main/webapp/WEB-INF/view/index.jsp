@@ -5,7 +5,8 @@
 <html>
 
 <head>
-<title>Hello world</title>
+  <title>Hello world</title>
+  <script data-main="modules/main" src="<@spring.url '/libs/require/r.js' />"></script>
 </head>
 
 <body>

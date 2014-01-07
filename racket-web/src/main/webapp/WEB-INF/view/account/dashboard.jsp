@@ -5,26 +5,22 @@
 
 <head>
   <title>Dashboard</title>
-  <!-- 
-    <script src="<@spring.url '/javascript/require/r.js' />"></script>
-   -->
-  <script src="<@spring.url '/libs/backups/angular.min.js'     />"></script>
-  <script src="<@spring.url '/javascript/account/dashboard.js' />"></script>
+  <script src="<@spring.url '/libs/angular/angular.min.js'     />"></script>
+  <script src="<@spring.url '/libs/angular/angular-ui-router.min.js' />"></script>
+  <script src="<@spring.url '/javascript/app.js' />"></script>
 </head>
 
-<body ng-controller="DashboardCtrl">
+<body ng-controller="MainCtrl">
   Hello, ${racketeer.account.username }!
   
+  <ul>
+    <li><a href="#/newracket">Create new</a>
+    <li><a href="#/racket/5">racket 5</a></li>
+  </ul>
+
   <section ui-view>
     <i>Some content will load here!</i>
   </section>
-  
-  <table>
-    <tr><th>row number</th></tr>
-    <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]"><td>{{i+1}}</td></tr>
-  </table>
-  
-  {{apples}}
   
 </body>
 
