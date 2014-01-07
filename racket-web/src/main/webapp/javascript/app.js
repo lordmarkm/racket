@@ -16,10 +16,16 @@ var racketApp = angular.module('racketApp', ['ui.router'])
 
 });
 
-racketApp.controller('NewRacketCtrl', function($scope) {
+racketApp.controller('NewRacketCtrl', function($scope, $http) {
 	$scope.submit = function(){
-		console.debug('about to submit. name=' + this.name + ', desc=' + this.desc);
+		$http.post('/racket/new', this.createform).success(function(racket) {
+			
+		});
 	}
+});
+
+racketApp.controller('SidebarCtrl', ['$scope', 'racketService'], function($scope, racketService) {
+	
 });
 
 function MainCtrl($scope) {

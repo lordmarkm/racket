@@ -1,11 +1,11 @@
 package com.racket.commons.models;
 
-import java.util.List;
+import java.util.Set;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -22,8 +22,8 @@ public class RacketGroup extends AbstractEntity {
     @ManyToOne
     private Racketeer author;
 
-    @ElementCollection
-    private List<Long> rackets;
+    @ManyToMany
+    private Set<Racket> rackets;
 
     public Racketeer getAuthor() {
         return author;
@@ -33,11 +33,11 @@ public class RacketGroup extends AbstractEntity {
         this.author = author;
     }
 
-    public List<Long> getRackets() {
+    public Set<Racket> getRackets() {
         return rackets;
     }
 
-    public void setRackets(List<Long> rackets) {
+    public void setRackets(Set<Racket> rackets) {
         this.rackets = rackets;
     }
 

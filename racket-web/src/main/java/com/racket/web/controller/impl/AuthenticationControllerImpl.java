@@ -24,7 +24,7 @@ import com.racket.commons.models.Racketeer;
 import com.racket.commons.services.RacketeerService;
 import com.racket.security.services.RegistrationService;
 import com.racket.web.controller.AuthenticationController;
-import com.racket.web.dto.AccountForm;
+import com.racket.web.forms.AccountForm;
 import com.racket.web.validator.AccountFormValidator;
 
 
@@ -98,7 +98,7 @@ public class AuthenticationControllerImpl extends GenericController implements A
         racketeer.setAccountInfo(accountInfo);
         racketeers.save(racketeer);
 
-        return redirect("/auth/login?status=login.reg.success");
+        return redirect("/auth/login?message=login.reg.success");
     }
 
     @InitBinder

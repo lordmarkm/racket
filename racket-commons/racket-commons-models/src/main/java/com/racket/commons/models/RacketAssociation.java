@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.racket.commons.models.support.RacketAuthority;
+
 /**
  * @author mbmartinez
  * For people (employees or business partners) who have limited rights to a racket

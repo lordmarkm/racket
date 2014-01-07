@@ -5,6 +5,7 @@
 
 <head>
   <title>Dashboard</title>
+  <script src="<@spring.url '/libs/backups/jquery.min.js'      />"></script>
   <script src="<@spring.url '/libs/angular/angular.min.js'     />"></script>
   <script src="<@spring.url '/libs/angular/angular-ui-router.min.js' />"></script>
   <script src="<@spring.url '/javascript/app.js' />"></script>

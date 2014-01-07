@@ -10,7 +10,7 @@ import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import com.baldy.commons.security.services.AccountService;
-import com.racket.web.dto.AccountForm;
+import com.racket.web.forms.AccountForm;
 
 /**
  * @author Mark

@@ -1,4 +1,4 @@
-package com.racket.commons.models;
+package com.racket.commons.models.support;
 
 /**
  * @author mbmartinez

@@ -1,4 +1,4 @@
-package com.racket.web.dto;
+package com.racket.web.forms;
 
 import javax.validation.constraints.Pattern;
 

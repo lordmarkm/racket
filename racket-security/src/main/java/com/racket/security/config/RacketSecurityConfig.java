@@ -65,6 +65,10 @@ public class RacketSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/**/newpost").authenticated()
 				.antMatchers("/**/manage").authenticated()
 				.antMatchers("/comment/post/**").authenticated() //lol POST methods in CommentController
+
+				//racket stuff
+				.antMatchers("/racket/new").authenticated()
+
 				.antMatchers("/**").permitAll()
 				.and()
 			.logout()
