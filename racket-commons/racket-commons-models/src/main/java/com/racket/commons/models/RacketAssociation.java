@@ -17,7 +17,7 @@ import com.racket.commons.models.support.RacketAuthority;
 @Table(name = RacketAssociation.table)
 public class RacketAssociation {
 
-    public static final String table = "associtions";
+    public static final String table = "associations";
 
     @Id @GeneratedValue
     private long id;

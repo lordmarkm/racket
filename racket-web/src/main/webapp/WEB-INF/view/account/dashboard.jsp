@@ -17,7 +17,6 @@
   
   <ul>
     <li><a href="#/newracket">Create new</a>
-    <li><a href="#/racket/5">racket 5</a></li>
   </ul>
 
   <section ui-view>
@@ -25,9 +24,10 @@
   </section>
   
   <section ng-controller="SidebarCtrl">
+    <h3>Your rackets:</h3>
     <ul>
       <li ng-repeat="racket in rackets">
-        {{racket.id}}: {{racket.name}} - {{racket.description}}
+        {{racket.id}}: <a href="#/racket/{{racket.id}}">{{racket.name}}</a> - {{racket.description}}
       </li>
     </ul>
   </section>

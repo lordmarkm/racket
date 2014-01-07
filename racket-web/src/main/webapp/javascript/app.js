@@ -11,7 +11,7 @@ var racketApp = angular.module('racketApp', ['ui.router', 'racketServices'])
 	$stateProvider.state('viewracket', {
 		url: '/racket/{racketId}',
 		templateUrl: '/racket',
-		controller: RacketCtrl
+		controller: 'RacketCtrl'
 	});
 
 });
@@ -24,20 +24,31 @@ racketApp.controller('NewRacketCtrl', ['$scope', '$http', 'racketService', funct
 	}
 }]);
 
-racketApp.controller('SidebarCtrl', ['$scope', 'racketService', function($scope, racketService) {
+racketApp.controller('SidebarCtrl', ['$scope', '$http', 'racketService', function($scope, $http, racketService) {
 	$scope.rackets = [];
+	
+	//load the user's rackets from server
+	$http.get('/racket/racketeerinfo').success(function(racketeer) {
+		$scope.rackets = $scope.rackets.concat(racketeer.rackets);
+	});
+
+	//whenever the user creates a new racket, add that to the sidebar
 	$scope.$on('handleNew', function(){
 		console.debug('received broadcast. new racket=' + racketService.active);
 		$scope.rackets.push(racketService.active);
 	});
 }]);
 
-function MainCtrl($scope) {
-}
-
-function RacketCtrl($scope, $stateParams) {
-	$scope.name = "RacketCtrl";
-	$scope.params = $stateParams;
+racketApp.controller('MainCtrl', ['$scope', function($scope){
 	
-	console.debug(JSON.stringify($stateParams));
-}
+}]);
+
+racketApp.controller('RacketCtrl', ['$scope', '$stateParams', '$http', function RacketCtrl($scope, $stateParams, $http) {
+	$scope.name = "RacketCtrl";
+	$scope.racket = {};
+
+	//load the user's rackets from server
+	$http.get('/racket/racketinfo/' + $stateParams.racketId).success(function(racket) {
+		$scope.racket = racket;
+	});
+}]);

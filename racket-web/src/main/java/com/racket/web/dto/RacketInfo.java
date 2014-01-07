@@ -9,6 +9,7 @@ import com.racket.commons.models.Racket;
 public class RacketInfo {
 
     private Racket racket;
+    private boolean canManage = false;
 
     public RacketInfo(Racket racket) {
         this.racket = racket;
@@ -25,5 +26,13 @@ public class RacketInfo {
     public String getDescription() {
         return racket.getDescription();
     }
+
+	public boolean isCanManage() {
+		return canManage;
+	}
+
+	public void setCanManage(boolean canManage) {
+		this.canManage = canManage;
+	}
 
 }

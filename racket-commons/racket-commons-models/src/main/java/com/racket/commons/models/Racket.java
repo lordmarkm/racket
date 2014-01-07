@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Racket extends AbstractEntity {
 
     public static final String table = "racket";
-    
+
     @ManyToOne
     private Racketeer racketeer;
 
