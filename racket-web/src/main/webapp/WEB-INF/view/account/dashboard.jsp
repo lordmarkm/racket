@@ -8,6 +8,7 @@
   <script src="<@spring.url '/libs/backups/jquery.min.js'      />"></script>
   <script src="<@spring.url '/libs/angular/angular.min.js'     />"></script>
   <script src="<@spring.url '/libs/angular/angular-ui-router.min.js' />"></script>
+  <script src="<@spring.url '/javascript/services.js' />"></script>
   <script src="<@spring.url '/javascript/app.js' />"></script>
 </head>
 
@@ -23,6 +24,13 @@
     <i>Some content will load here!</i>
   </section>
   
+  <section ng-controller="SidebarCtrl">
+    <ul>
+      <li ng-repeat="racket in rackets">
+        {{racket.id}}: {{racket.name}} - {{racket.description}}
+      </li>
+    </ul>
+  </section>
 </body>
 
 </html>

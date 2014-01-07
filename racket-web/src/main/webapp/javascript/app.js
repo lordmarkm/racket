@@ -1,4 +1,4 @@
-var racketApp = angular.module('racketApp', ['ui.router'])
+var racketApp = angular.module('racketApp', ['ui.router', 'racketServices'])
 
 .config(function($stateProvider) {
 
@@ -16,17 +16,21 @@ var racketApp = angular.module('racketApp', ['ui.router'])
 
 });
 
-racketApp.controller('NewRacketCtrl', function($scope, $http) {
+racketApp.controller('NewRacketCtrl', ['$scope', '$http', 'racketService', function($scope, $http, racketService) {
 	$scope.submit = function(){
 		$http.post('/racket/new', this.createform).success(function(racket) {
-			
+			racketService.broadcastNew(racket);
 		});
 	}
-});
+}]);
 
-racketApp.controller('SidebarCtrl', ['$scope', 'racketService'], function($scope, racketService) {
-	
-});
+racketApp.controller('SidebarCtrl', ['$scope', 'racketService', function($scope, racketService) {
+	$scope.rackets = [];
+	$scope.$on('handleNew', function(){
+		console.debug('received broadcast. new racket=' + racketService.active);
+		$scope.rackets.push(racketService.active);
+	});
+}]);
 
 function MainCtrl($scope) {
 }
