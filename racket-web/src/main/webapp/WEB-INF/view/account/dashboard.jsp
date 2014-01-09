@@ -1,18 +1,15 @@
 <#import "/spring.ftl" as spring /> 
 
 <!DOCTYPE html>
-<html ng-app="racketApp">
+<html>
 
 <head>
   <title>Dashboard</title>
-  <script src="<@spring.url '/libs/backups/jquery.min.js'      />"></script>
-  <script src="<@spring.url '/libs/angular/angular.min.js'     />"></script>
-  <script src="<@spring.url '/libs/angular/angular-ui-router.min.js' />"></script>
-  <script src="<@spring.url '/javascript/services.js' />"></script>
-  <script src="<@spring.url '/javascript/app.js' />"></script>
+  <script src="<@spring.url '/libs/require/r.js'/>"></script>
+  <script src="<@spring.url '/javascript/main.js'/>"></script>
 </head>
 
-<body ng-controller="MainCtrl">
+<body>
   Hello, ${racketeer.account.username }!
   
   <ul>
@@ -31,6 +28,7 @@
       </li>
     </ul>
   </section>
+  
 </body>
 
 </html>
