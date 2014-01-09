@@ -50,8 +50,10 @@ public class RacketControllerImpl extends GenericController implements RacketCon
 		log.debug("Racket info requested. user={}, id={}", name(principal), id);
 
 		Racket racket = rackets.findOne(id);
+		RacketInfo racketInfo = new RacketInfo(racket);
+		racketInfo.setCanManage(rackets.canManage(racket, principal.getName()));
 
-		return new ResponseEntity<RacketInfo>(new RacketInfo(racket), HttpStatus.OK);
+		return new ResponseEntity<RacketInfo>(racketInfo, HttpStatus.OK);
 	}
     
     @Override
@@ -87,6 +89,11 @@ public class RacketControllerImpl extends GenericController implements RacketCon
     	sidebarInfo.convertAndSetRackets(userRackets);
 
     	return new ResponseEntity<RacketeerInfo>(sidebarInfo, HttpStatus.OK);
+    }
+
+    @Override
+    public ModelAndView manageRacketTemplate() {
+        return mav("racket/manage");
     }
 
 }

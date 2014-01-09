@@ -26,7 +26,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         source.setBasename("messages");  
         source.setUseCodeAsDefaultMessage(true);  
         return source;  
-    }  
+    }
 	
 	//Default validator
     @Bean

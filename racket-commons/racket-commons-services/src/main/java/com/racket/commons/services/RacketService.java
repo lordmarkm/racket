@@ -6,12 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.racket.commons.models.Racket;
 import com.racket.commons.models.Racketeer;
+import com.racket.commons.services.custom.RacketServiceCustom;
 
 /**
  * Aggregate service for rental and retail
  * @author mbmartinez
  */
-public interface RacketService extends JpaRepository<Racket, Long>  {
+public interface RacketService extends JpaRepository<Racket, Long>, RacketServiceCustom  {
 
 	Page<Racket> findByRacketeer(Racketeer racketeer, Pageable page);
 

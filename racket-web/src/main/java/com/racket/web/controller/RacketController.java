@@ -38,6 +38,10 @@ public interface RacketController {
     ResponseEntity<RacketInfo> createRacket(Principal principal, RacketForm form);
 
     @ResponseBody
+    @RequestMapping(value = "/manage", method = RequestMethod.GET)
+    ModelAndView manageRacketTemplate();
+
+    @ResponseBody
     @RequestMapping("/racketeerinfo")
     ResponseEntity<RacketeerInfo> getRacketeerInfoForSidebar(Principal principal);
 
