@@ -2,6 +2,8 @@ package com.racket.commons.services;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import javax.annotation.Resource;
 
 import org.junit.Before;
@@ -16,7 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baldy.commons.security.models.Account;
 import com.baldy.commons.security.services.AccountService;
 import com.baldy.commons.security.services.Roles;
+import com.racket.commons.models.AccountInfo;
 import com.racket.commons.models.Racketeer;
+import com.racket.commons.models.RacketeerId;
+import com.racket.commons.models.SequenceNumber;
 import com.racket.commons.services.config.RacketCommonsServicesConfig;
 import com.racket.infra.persistence.config.PersistenceConfig;
 
@@ -54,13 +59,22 @@ public class RacketeerServiceTest {
 
 		Racketeer racketeer = new Racketeer();
 		racketeer.setAccount(account);
-
+		
+		RacketeerId rid = new RacketeerId();
+		rid.setName("Mark");
+		racketeer.setIds(Arrays.asList(rid));
+		
 		Racketeer saved = racketeers.save(racketeer);
 		assertNotNull(saved);
 		
-		log.info("Saved racket={}", saved);
+		log.info("Saved racketeer={}", saved);
+		
+		log.info("After this there should be no pre-insert listeners called on Racketeer.");
+		saved.setAccountInfo(new AccountInfo());
+		racketeers.save(saved);
 		
 		assertNotNull(racketeers.findByUsername("user"));
+		
 	}
 	
 }

@@ -1,6 +1,9 @@
 package com.racket.commons.models;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -31,6 +34,9 @@ public class Racketeer {
     @OneToOne(cascade=CascadeType.ALL)
     private AccountInfo accountInfo;
 
+    @ElementCollection
+    private List<RacketeerId> ids;
+    
     public String toString() {
     	return new ToStringCreator(this)
     		.append("id", id)
@@ -62,5 +68,13 @@ public class Racketeer {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+    public List<RacketeerId> getIds() {
+        return ids;
+    }
+
+    public void setIds(List<RacketeerId> ids) {
+        this.ids = ids;
+    }
 
 }
