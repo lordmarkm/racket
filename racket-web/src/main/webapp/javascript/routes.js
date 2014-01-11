@@ -12,6 +12,11 @@ define(['/javascript/app.js'], function(app) {
     		templateUrl: '/racket',
     		controller: 'RacketCtrl'
     	});
+    	$stateProvider.state('manageracket', {
+    		url: '/racket/manage/{racketId}',
+    		templateUrl: '/racket/manage',
+    		controller: 'ManageRacketCtrl'
+    	});
     });
 
 });

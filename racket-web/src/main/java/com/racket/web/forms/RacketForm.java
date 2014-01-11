@@ -1,9 +1,12 @@
 package com.racket.web.forms;
 
+import java.util.HashSet;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.core.style.ToStringCreator;
 
 import com.racket.commons.models.Racket;
+import com.racket.commons.models.RacketCommodity;
 
 /**
  * @author mbmartinez
@@ -26,7 +29,8 @@ public class RacketForm {
         if (null != id) racket.setId(id);
         racket.setName(name);
         racket.setDescription(description);
-        
+        racket.setCommodities(new HashSet<RacketCommodity>());
+
         return racket;
     }
     

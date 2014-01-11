@@ -2,6 +2,7 @@ package com.racket.commons.models;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -19,10 +20,10 @@ public class Racket extends AbstractEntity {
     @ManyToOne
     private Racketeer racketeer;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private Set<RacketAssociation> associations;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private Set<RacketCommodity> commodities;
 
     public Racketeer getRacketeer() {

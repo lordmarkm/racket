@@ -13,7 +13,7 @@
   Hello, ${racketeer.account.username }!
   
   <ul>
-    <li><a href="#/newracket">Create new</a>
+    <li><a href="#/newracket">Create new racket</a>
   </ul>
 
   <section ui-view>

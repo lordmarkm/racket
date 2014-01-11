@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.baldy.commons.models.Commodity;
@@ -19,6 +20,9 @@ import com.racket.commons.models.support.CommodityType;
 public class RacketCommodity extends AbstractEntity implements Commodity {
 
     public static final String table = "commodities";
+
+    @ManyToOne(optional = false)
+    private Racket racket;
     
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -53,5 +57,13 @@ public class RacketCommodity extends AbstractEntity implements Commodity {
     public void setUnit(String unit) {
         this.unit = unit;
     }
+
+	public Racket getRacket() {
+		return racket;
+	}
+
+	public void setRacket(Racket racket) {
+		this.racket = racket;
+	}
 
 }

@@ -1,6 +1,10 @@
 package com.racket.web.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.racket.commons.models.Racket;
+import com.racket.commons.models.RacketCommodity;
 
 /**
  * Dto for Racket, to be used for sidebar
@@ -27,7 +31,15 @@ public class RacketInfo {
         return racket.getDescription();
     }
 
-	public boolean isCanManage() {
+    public List<RacketCommodityInfo> getCommodities() {
+    	List<RacketCommodityInfo> commodityDtos = new ArrayList<RacketCommodityInfo>();
+    	for (RacketCommodity commodity : racket.getCommodities()) {
+    		commodityDtos.add(new RacketCommodityInfo(commodity));
+    	}
+    	return commodityDtos;
+    }
+
+    public boolean isCanManage() {
 		return canManage;
 	}
 
