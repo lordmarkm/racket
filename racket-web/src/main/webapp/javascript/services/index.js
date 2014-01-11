@@ -1,1 +1,3 @@
-define([], function () {});
+define([
+    '/javascript/services/RacketService.js'
+], function () {});

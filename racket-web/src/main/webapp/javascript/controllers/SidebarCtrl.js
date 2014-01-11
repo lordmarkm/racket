@@ -1,7 +1,7 @@
 define(['/javascript/controllers/module.js'], function (controllers) {
     'use strict';
     
-    controllers.controller('SidebarCtrl', ['$scope', '$http', function($scope, $http) {
+    controllers.controller('SidebarCtrl', ['$scope', '$http', 'RacketService', function($scope, $http, racketService) {
     	$scope.rackets = [];
     	
     	//load the user's rackets from server
@@ -10,10 +10,10 @@ define(['/javascript/controllers/module.js'], function (controllers) {
     	});
 
     	//whenever the user creates a new racket, add that to the sidebar
-    	//$scope.$on('handleNew', function(){
-    	//	console.debug('received broadcast. new racket=' + racketService.active);
-    	//	$scope.rackets.push(racketService.active);
-    	//});
+    	$scope.$on('handleNew', function(){
+    		console.debug('received broadcast. new racket=' + JSON.stringify(racketService.active));
+    		$scope.rackets.push(racketService.active);
+    	});
     }]);
 });
 
