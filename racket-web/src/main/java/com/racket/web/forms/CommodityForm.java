@@ -14,12 +14,13 @@ import com.racket.commons.models.support.CommodityType;
  */
 public class CommodityForm {
 
-	@NotNull
 	private Long racketId;
+
+	private long id;
 	
 	@NotNull
 	private String name;
-	
+
 	@NotNull
 	private String description;
 	
@@ -33,6 +34,7 @@ public class CommodityForm {
 	public String toString() {
 		return new ToStringCreator(this)
 			.append("racketId", racketId)
+			.append("id", id)
 			.append("name", name)
 			.append("description", description)
 			.append("type", type)
@@ -48,6 +50,11 @@ public class CommodityForm {
 		commodity.setType(type);
 		commodity.setPrice(price);
 		commodity.setUnit(unit);
+		
+		if (id != 0) {
+			commodity.setId(id);
+		}
+		
 		return commodity;
 	}
 
@@ -97,6 +104,14 @@ public class CommodityForm {
 
 	public void setRacketId(Long racketId) {
 		this.racketId = racketId;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 }

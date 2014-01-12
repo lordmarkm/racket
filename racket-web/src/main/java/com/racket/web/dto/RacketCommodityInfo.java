@@ -11,11 +11,11 @@ import com.racket.commons.models.support.CommodityType;
 public class RacketCommodityInfo {
 
 	private RacketCommodity racketCommodity;
-	
+
 	public RacketCommodityInfo(RacketCommodity racketCommodity) {
 		this.racketCommodity = racketCommodity;
 	}
-	
+
 	public long getId() {
 		return racketCommodity.getId();
 	}

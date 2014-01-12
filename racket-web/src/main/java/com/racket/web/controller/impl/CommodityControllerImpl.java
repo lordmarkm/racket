@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -85,6 +86,15 @@ public class CommodityControllerImpl extends GenericController implements Commod
 	@Override
 	public ModelAndView editCommodityTemplate(Principal principal) {
 		return mav("commodity/edit");
+	}
+
+	@Override
+	public ResponseEntity<RacketCommodityInfo> edit(Principal principal, @RequestBody CommodityForm form) {
+		RacketCommodity commodity = form.toCommodity();
+		Racket racket = rackets.findOne(form.getRacketId());
+		commodity.setRacket(racket);
+		commodity = commodities.save(commodity);
+		return new ResponseEntity<RacketCommodityInfo>(new RacketCommodityInfo(commodity), HttpStatus.OK);
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,9 +26,13 @@ public interface CommodityController {
 	ResponseEntity<RacketCommodityInfo> newCommodity(Principal principal, CommodityForm form);
 
 	@ResponseBody
-	@RequestMapping("/edit")
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	ModelAndView editCommodityTemplate(Principal principal);
-	
+
+	@ResponseBody
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	ResponseEntity<RacketCommodityInfo> edit(Principal principal, CommodityForm form);
+
 	@ResponseBody
 	@RequestMapping("/commodityinfo/{id}")
 	ResponseEntity<RacketCommodityInfo> commodityInfo(Principal principal, Long id);

@@ -1,4 +1,9 @@
 define(['angular'], function (ng) {
     'use strict';
-    return ng.module('app.controllers', []);
+
+    var controllers = ng.module('app.controllers', []);
+
+    controllers.constant('commodityTypes', ['RETAIL', 'RENTAL']);
+
+    return controllers;
 });

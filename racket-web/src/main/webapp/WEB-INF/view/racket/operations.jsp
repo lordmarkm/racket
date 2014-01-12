@@ -22,7 +22,7 @@ controller: {{name}}
         <td>{{commodity.name}}</td>
         <td>{{commodity.description}}</td>
         <td>{{commodity.type}}</td>
-        <td ng-switch-on="commodity.type">
+        <td ng-switch on="commodity.type">
           <span ng-switch-when="RETAIL">It's retail</span>
           <span ng-switch-when="RENTAL">It's rental</span>
         </td>

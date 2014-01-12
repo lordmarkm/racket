@@ -25,7 +25,7 @@ define(['/javascript/app.js'], function(app) {
     	
     	//commodity states
     	$stateProvider.state('editcommodity', {
-    		url: '/commodity/edit/{commodityId}',
+    		url: '/commodity/edit/{racketId}/{commodityId}',
     		templateUrl: '/commodity/edit',
     		controller: 'CommodityEditCtrl'
     	});

@@ -37,7 +37,7 @@ controller: {{name}}
           </span>
         </td>
         <td>
-          <a href="#/commodity/edit/{{commodity.id}}">Edit</a>
+          <a href="#/commodity/edit/{{racket.id}}/{{commodity.id}}">Edit</a>
         </td>
       </tr>
     </tbody>
