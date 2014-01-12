@@ -83,8 +83,9 @@ public class RacketControllerImpl extends GenericController implements RacketCon
 
     	Racketeer racketeer = racketeers.findByUsername(principal.getName());
 
-    	PageRequest pageRequest = new PageRequest(0, 10);
-    	List<Racket> userRackets = rackets.findByRacketeer(racketeer, pageRequest).getContent();
+    	//PageRequest pageRequest = new PageRequest(0, 10);
+    	//List<Racket> userRackets = rackets.findByRacketeer(racketeer, pageRequest).getContent();
+    	List<Racket> userRackets = rackets.findByRacketeer(racketeer);
 
     	RacketeerInfo sidebarInfo = new RacketeerInfo();
     	sidebarInfo.convertAndSetRackets(userRackets);
@@ -96,5 +97,11 @@ public class RacketControllerImpl extends GenericController implements RacketCon
     public ModelAndView manageRacketTemplate() {
         return mav("racket/manage");
     }
+
+	@Override
+	public ResponseEntity<String> delete(Principal principal, @PathVariable Long id) {
+		rackets.delete(id);
+		return new ResponseEntity<String>(HttpStatus.OK);
+	}
 
 }

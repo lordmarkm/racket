@@ -14,6 +14,15 @@ define(['/javascript/controllers/module.js'], function (controllers) {
     		console.debug('received broadcast. new racket=' + JSON.stringify(racketService.active));
     		$scope.rackets.push(racketService.active);
     	});
+    	
+    	//whenever the user deletes a racket, remove it form the sidebar
+    	$scope.$on('handleDelete', function() {
+    		for(var i in $scope.rackets) {
+    			if($scope.rackets[i].id == racketService.active) {
+    				$scope.rackets.splice(i, 1);
+    			}
+    		}
+    	});
     }]);
 });
 

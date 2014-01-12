@@ -10,6 +10,12 @@ define(['/javascript/services/module.js'], function (services) {
     		$rootScope.$broadcast('handleNew');
     	}
 
+    	racketService.broadcastDelete = function(id) {
+    		console.debug('received delete event: ' + id);
+    		this.active = id;
+    		$rootScope.$broadcast('handleDelete');
+    	}
+
     	return racketService;
     });
 });

@@ -45,4 +45,8 @@ public interface RacketController {
     @RequestMapping("/racketeerinfo")
     ResponseEntity<RacketeerInfo> getRacketeerInfoForSidebar(Principal principal);
 
+    @ResponseBody
+    @RequestMapping("/delete/{id}")
+    ResponseEntity<String> delete(Principal principal, Long id);
+
 }

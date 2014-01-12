@@ -1,7 +1,7 @@
 define(['/javascript/controllers/module.js'], function (controllers) {
   'use strict';
 
-  controllers.controller('ManageRacketCtrl', ['$scope', '$http', '$stateParams', 'RacketService', function($scope, $http, $stateParams, racketService) {
+  controllers.controller('ManageRacketCtrl', ['$scope', '$http', '$state', '$stateParams', 'RacketService', function($scope, $http, $state, $stateParams, racketService) {
 	  
 	  $scope.name = 'ManageRacketCtrl';
       $scope.racket = {};
@@ -15,6 +15,8 @@ define(['/javascript/controllers/module.js'], function (controllers) {
     	if(!confirm('Are you sure?')) return false;
     	$http.post('/racket/delete/' + $stateParams.racketId).success(function() {
     		console.debug('racket deleted!');
+    		racketService.broadcastDelete($scope.racketId);
+    		$state.go('home');
     	});
       }
 

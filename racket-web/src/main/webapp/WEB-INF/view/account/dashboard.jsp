@@ -8,6 +8,7 @@
   <script src="<@spring.url '/libs/require/r.js'/>"></script>
   <script src="<@spring.url '/javascript/main.js'/>"></script>
   <link rel="stylesheet" href="<@spring.url '/libs/backups/bootstrap-combined.min.css' />" />
+  <link rel="stylesheet" href="<@spring.url '/libs/plugolabs/css/fam-icons.css' />" />
 </head>
 
 <body>
@@ -15,14 +16,14 @@
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="span12">
-        Hello, ${racketeer.account.username }!
+        <a href="#/"><i class="fam-house"></i></a> Hello, ${racketeer.account.username }!
       </div>
     </div>
     <div class="row-fluid">
-      <div class="span2" ng-controller="SidebarCtrl">
+      <div class="span2" data-ng-controller="SidebarCtrl">
         <h3>Your rackets:</h3>
-        <ul style="list-style-type: none;">
-          <li ng-repeat="racket in rackets">
+        <ul style="list-style-type: none; margin-left: 0;">
+          <li data-ng-repeat="racket in rackets">
             <a href="#/racket/{{racket.id}}">{{racket.name}}</a> - {{racket.description}}
           </li>
         </ul>
