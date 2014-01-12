@@ -2,6 +2,10 @@ package com.racket.web.forms;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.NotNull;
+
+import org.springframework.core.style.ToStringCreator;
+
 import com.racket.commons.models.RacketCommodity;
 import com.racket.commons.models.support.CommodityType;
 
@@ -10,17 +14,38 @@ import com.racket.commons.models.support.CommodityType;
  */
 public class CommodityForm {
 
+	@NotNull
 	private Long racketId;
+	
+	@NotNull
 	private String name;
+	
+	@NotNull
 	private String description;
+	
+	@NotNull
 	private CommodityType type;
+	
 	private BigDecimal price;
 	private String unit;
+	
+	@Override
+	public String toString() {
+		return new ToStringCreator(this)
+			.append("racketId", racketId)
+			.append("name", name)
+			.append("description", description)
+			.append("type", type)
+			.append("price", price)
+			.append("unit", unit)
+			.toString();
+	}
 	
 	public RacketCommodity toCommodity() {
 		RacketCommodity commodity = new RacketCommodity();
 		commodity.setDescription(description);
 		commodity.setName(name);
+		commodity.setType(type);
 		commodity.setPrice(price);
 		commodity.setUnit(unit);
 		return commodity;

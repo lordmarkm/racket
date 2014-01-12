@@ -9,12 +9,16 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.baldy.commons.web.controller.GenericController;
 import com.racket.commons.models.Racket;
@@ -25,6 +29,9 @@ import com.racket.web.controller.CommodityController;
 import com.racket.web.dto.RacketCommodityInfo;
 import com.racket.web.forms.CommodityForm;
 
+/**
+ * @author Mark
+ */
 @Component
 public class CommodityControllerImpl extends GenericController implements CommodityController {
 
@@ -57,19 +64,33 @@ public class CommodityControllerImpl extends GenericController implements Commod
 	}
 
 	@Override
-	public ResponseEntity<RacketCommodityInfo> newCommodity(Principal principal, @Valid CommodityForm form) {
+	public ResponseEntity<RacketCommodityInfo> newCommodity(Principal principal, @RequestBody @Valid CommodityForm form) {
 
+		log.info("Received new commodity request. form={}", form);
+		
 		Racket racket = rackets.findOne(form.getRacketId());
 		RacketCommodity commodity = form.toCommodity();
 
-		RacketCommodity saved = commodities.save(commodity);
-		
 		racket.getCommodities().add(commodity);
 		commodity.setRacket(racket);
-		
+
 		rackets.save(racket);
-		
-		return null;
+
+		//Get the latest saved commodity from the racket. There has to be a better way to do this
+		RacketCommodity saved = commodities.findByRacketId(racket.getId(), new PageRequest(0, 1, Direction.DESC, "id")).get(0);
+
+		return new ResponseEntity<RacketCommodityInfo>(new RacketCommodityInfo(saved), HttpStatus.OK);
+	}
+
+	@Override
+	public ModelAndView editCommodityTemplate(Principal principal) {
+		return mav("commodity/edit");
+	}
+
+	@Override
+	public ResponseEntity<RacketCommodityInfo> commodityInfo(Principal principal, @PathVariable Long id) {
+		RacketCommodity commodity = commodities.findOne(id);
+		return new ResponseEntity<RacketCommodityInfo>(new RacketCommodityInfo(commodity), HttpStatus.OK);
 	}
 
 }

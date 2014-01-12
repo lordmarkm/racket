@@ -1,6 +1,6 @@
 package com.racket.commons.services;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Arrays;
 
@@ -21,7 +21,6 @@ import com.baldy.commons.security.services.Roles;
 import com.racket.commons.models.AccountInfo;
 import com.racket.commons.models.Racketeer;
 import com.racket.commons.models.RacketeerId;
-import com.racket.commons.models.SequenceNumber;
 import com.racket.commons.services.config.RacketCommonsServicesConfig;
 import com.racket.infra.persistence.config.PersistenceConfig;
 

@@ -14,6 +14,7 @@ public class RacketInfo {
 
     private Racket racket;
     private boolean canManage = false;
+    private boolean canOperate = false;
 
     public RacketInfo(Racket racket) {
         this.racket = racket;
@@ -45,6 +46,14 @@ public class RacketInfo {
 
 	public void setCanManage(boolean canManage) {
 		this.canManage = canManage;
+	}
+
+	public boolean isCanOperate() {
+		return canOperate;
+	}
+
+	public void setCanOperate(boolean canOperate) {
+		this.canOperate = canOperate;
 	}
 
 }

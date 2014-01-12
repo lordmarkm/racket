@@ -5,6 +5,6 @@ package com.racket.commons.models.support;
  */
 public enum RacketAuthority {
 
-    ADMIN, CAN_MANAGE, CAN_UPDATE, READ_ONLY
+    ADMIN, CAN_MANAGE, CAN_UPDATE, CAN_OPERATE, READ_ONLY
 
 }

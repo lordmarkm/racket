@@ -51,6 +51,7 @@ public class RacketControllerImpl extends GenericController implements RacketCon
 
 		Racket racket = rackets.findOne(id);
 		RacketInfo racketInfo = new RacketInfo(racket);
+		racketInfo.setCanOperate(rackets.canOperate(racket, principal.getName()));
 		racketInfo.setCanManage(rackets.canManage(racket, principal.getName()));
 
 		return new ResponseEntity<RacketInfo>(racketInfo, HttpStatus.OK);

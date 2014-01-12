@@ -17,6 +17,18 @@ define(['/javascript/app.js'], function(app) {
     		templateUrl: '/racket/manage',
     		controller: 'ManageRacketCtrl'
     	});
+    	$stateProvider.state('racketops', {
+    		url: '/racket/operations/{racketId}',
+    		templateUrl: '/racketoperations',
+    		controller: 'RacketOperationsCtrl'
+    	});
+    	
+    	//commodity states
+    	$stateProvider.state('editcommodity', {
+    		url: '/commodity/edit/{commodityId}',
+    		templateUrl: '/commodity/edit',
+    		controller: 'CommodityEditCtrl'
+    	});
     });
 
 });

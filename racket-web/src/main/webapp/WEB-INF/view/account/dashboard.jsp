@@ -7,6 +7,7 @@
   <title>Dashboard</title>
   <script src="<@spring.url '/libs/require/r.js'/>"></script>
   <script src="<@spring.url '/javascript/main.js'/>"></script>
+  <link rel="stylesheet" href="<@spring.url '/libs/backups/bootstrap-combined.min.css' />" />
 </head>
 
 <body>
