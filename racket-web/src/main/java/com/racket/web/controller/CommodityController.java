@@ -34,6 +34,10 @@ public interface CommodityController {
 	ResponseEntity<RacketCommodityInfo> edit(Principal principal, CommodityForm form);
 
 	@ResponseBody
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	ResponseEntity<String> delete(Principal principal, Long id);
+	
+	@ResponseBody
 	@RequestMapping("/commodityinfo/{id}")
 	ResponseEntity<RacketCommodityInfo> commodityInfo(Principal principal, Long id);
 

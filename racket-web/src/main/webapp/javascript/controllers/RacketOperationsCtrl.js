@@ -11,6 +11,13 @@ define(['/javascript/controllers/module.js'], function (controllers) {
 		$scope.racket = racket;
 	  });
       
+      //handle sell
+      $scope.sellform = {};
+      $scope.sellform.sold = 1;
+      
+      //handle restock
+      $scope.restockform = {};
+      $scope.restockform.restocked = 1;
   }]);
   
 });

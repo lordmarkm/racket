@@ -28,6 +28,18 @@ define(['/javascript/controllers/module.js'], function (controllers) {
     		  $scope.racket.commodities.push(commodity);
     	  });
       }
+      
+      $scope.deleteCommodity = function(commodity) {
+    	  if(!confirm('Are you sure you want to delete ' + commodity.name + '?')) return false;
+    	  $http.post('/commodity/delete/' + commodity.id).success(function(){
+    		  console.debug($scope.racket.commodities);
+    		  var index = $scope.racket.commodities.indexOf(commodity);
+    		  console.debug('found index: ' + index);
+    		  if (index != -1) {
+    			  $scope.racket.commodities.splice(index, 1);
+    		  }
+    	  });
+      }
   }]);
   
 });

@@ -5,6 +5,9 @@ controller: {{name}}
   <div>racket name: {{racket.name}}</div>
   <div>description: {{racket.description}}</div>
   
+  <a ng-if="racket.canOperate" href="#/racket/operations/{{racket.id}}">Operations</a>
+  <a ng-if="racket.canManage" href="#/racket/manage/{{racket.id}}">Manage</a>
+  
   <button data-ng-click="deleteRacket()">Delete this racket</button>
   
   <h4>Commodities:</h4>
@@ -38,6 +41,7 @@ controller: {{name}}
         </td>
         <td>
           <a href="#/commodity/edit/{{racket.id}}/{{commodity.id}}">Edit</a>
+          <a href="javascript:;" ng-click="deleteCommodity(commodity)">Delete</a>
         </td>
       </tr>
     </tbody>

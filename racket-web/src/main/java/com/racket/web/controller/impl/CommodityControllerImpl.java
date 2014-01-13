@@ -16,9 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.baldy.commons.web.controller.GenericController;
@@ -101,6 +98,16 @@ public class CommodityControllerImpl extends GenericController implements Commod
 	public ResponseEntity<RacketCommodityInfo> commodityInfo(Principal principal, @PathVariable Long id) {
 		RacketCommodity commodity = commodities.findOne(id);
 		return new ResponseEntity<RacketCommodityInfo>(new RacketCommodityInfo(commodity), HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<String> delete(Principal principal, @PathVariable Long id) {
+		RacketCommodity toDelete = commodities.findOne(id);
+		Racket parent = toDelete.getRacket();
+		parent.getCommodities().remove(toDelete);
+		rackets.save(parent);
+		commodities.delete(id);
+		return new ResponseEntity<String>(HttpStatus.OK);
 	}
 
 }
