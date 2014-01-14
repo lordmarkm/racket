@@ -46,7 +46,7 @@ public class RacketControllerImpl extends GenericController implements RacketCon
     }
 
 	@Override
-	public ResponseEntity<RacketInfo> racketInfo(Principal principal, @PathVariable Long id) {
+	public ResponseEntity<RacketInfo> racketInfo(Principal principal, Long id) {
 		log.debug("Racket info requested. user={}, id={}", name(principal), id);
 
 		Racket racket = rackets.findOne(id);
@@ -99,7 +99,7 @@ public class RacketControllerImpl extends GenericController implements RacketCon
     }
 
 	@Override
-	public ResponseEntity<String> delete(Principal principal, @PathVariable Long id) {
+	public ResponseEntity<String> delete(Principal principal, Long id) {
 		rackets.delete(id);
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
