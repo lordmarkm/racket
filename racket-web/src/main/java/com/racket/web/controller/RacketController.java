@@ -3,6 +3,7 @@ package com.racket.web.controller;
 import java.security.Principal;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,6 +46,7 @@ public interface RacketController {
     @RequestMapping("/racketeerinfo")
     ResponseEntity<RacketeerInfo> getRacketeerInfoForSidebar(Principal principal);
 
+    @PreAuthorize()
     @ResponseBody
     @RequestMapping("/delete/{id}")
     ResponseEntity<String> delete(Principal principal, Long id);
