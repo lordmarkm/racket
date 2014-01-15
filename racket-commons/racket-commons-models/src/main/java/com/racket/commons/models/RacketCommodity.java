@@ -3,6 +3,7 @@ package com.racket.commons.models;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -23,6 +24,12 @@ public class RacketCommodity extends AbstractEntity implements Commodity {
 
     @ManyToOne(optional = false)
     private Racket racket;
+    
+    @Embedded
+    private RentalDetails rentalDetails;
+    
+    @Embedded
+    private RetailDetails retailDetails;
     
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -65,5 +72,21 @@ public class RacketCommodity extends AbstractEntity implements Commodity {
 	public void setRacket(Racket racket) {
 		this.racket = racket;
 	}
+
+    public RentalDetails getRentalDetails() {
+        return rentalDetails;
+    }
+
+    public void setRentalDetails(RentalDetails rentalDetails) {
+        this.rentalDetails = rentalDetails;
+    }
+
+    public RetailDetails getRetailDetails() {
+        return retailDetails;
+    }
+
+    public void setRetailDetails(RetailDetails retailDetails) {
+        this.retailDetails = retailDetails;
+    }
 
 }

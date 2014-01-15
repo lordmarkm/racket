@@ -1,21 +1,12 @@
 package com.racket.commons.services;
 
-import static org.junit.Assert.*;
-
-import java.util.Collections;
-
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.racket.commons.models.Racket;
-import com.racket.commons.models.RacketCommodity;
-import com.racket.commons.models.support.CommodityType;
 import com.racket.commons.services.config.RacketCommonsServicesConfig;
 import com.racket.infra.persistence.config.PersistenceConfig;
 
