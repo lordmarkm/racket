@@ -1,10 +1,12 @@
 package com.racket.commons.models;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
 /**
  * @author mbmartinez
  */
+@Embeddable
 public class RetailDetails {
 
     /**

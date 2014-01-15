@@ -24,13 +24,13 @@ public class RacketCommodity extends AbstractEntity implements Commodity {
 
     @ManyToOne(optional = false)
     private Racket racket;
-    
+
     @Embedded
     private RentalDetails rentalDetails;
-    
+
     @Embedded
     private RetailDetails retailDetails;
-    
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private CommodityType type;
@@ -74,7 +74,7 @@ public class RacketCommodity extends AbstractEntity implements Commodity {
 	}
 
     public RentalDetails getRentalDetails() {
-        return rentalDetails;
+        return rentalDetails != null ? rentalDetails : new RentalDetails();
     }
 
     public void setRentalDetails(RentalDetails rentalDetails) {
@@ -82,7 +82,7 @@ public class RacketCommodity extends AbstractEntity implements Commodity {
     }
 
     public RetailDetails getRetailDetails() {
-        return retailDetails;
+        return retailDetails != null ? retailDetails : new RetailDetails();
     }
 
     public void setRetailDetails(RetailDetails retailDetails) {

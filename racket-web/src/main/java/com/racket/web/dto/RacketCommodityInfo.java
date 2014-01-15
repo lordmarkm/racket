@@ -2,6 +2,9 @@ package com.racket.web.dto;
 
 import java.math.BigDecimal;
 
+import org.apache.commons.lang.Validate;
+import org.joda.time.DateTime;
+
 import com.racket.commons.models.RacketCommodity;
 import com.racket.commons.models.support.CommodityType;
 
@@ -13,10 +16,26 @@ public class RacketCommodityInfo {
 	private RacketCommodity racketCommodity;
 
 	public RacketCommodityInfo(RacketCommodity racketCommodity) {
+	    Validate.notNull(racketCommodity.getRentalDetails());
+	    Validate.notNull(racketCommodity.getRetailDetails());
 		this.racketCommodity = racketCommodity;
 	}
 
-	public long getId() {
+	//Delegate methods to retail/rental detail!
+    public int getStock() {
+        return racketCommodity.getRetailDetails().getAmount();
+    }
+
+    public long getRentalStart() {
+        DateTime rentalStarted = racketCommodity.getRentalDetails().getRentalStarted();
+        if (null == rentalStarted) {
+            return 0;
+        } else {
+            return rentalStarted.getMillis();
+        }
+    }
+
+    public long getId() {
 		return racketCommodity.getId();
 	}
 
