@@ -1,14 +1,13 @@
-package com.racket.security.methodsecurity;
+package com.racket.security.config;
 
 import javax.annotation.Resource;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
+
+import com.racket.security.methodsecurity.RacketSecurityExpressionHandler;
 
 
 /**
@@ -21,21 +20,11 @@ import org.springframework.security.config.annotation.method.configuration.Globa
 public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
 
 	@Resource
-	private RacketSecurityExpressionHandler expressionHandler;
+	private RacketSecurityExpressionHandler eh;
 
-	@Bean @Override
-    public AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
-    }
-
-    @Bean
-    public PermissionEvaluator permissionEvaluator() {
-        return new RacketPermissionEvaluator();
-    }
-
-    @Override
+	@Override
     protected MethodSecurityExpressionHandler expressionHandler() {
-    	return expressionHandler;
+		return eh;
     }
 
 }

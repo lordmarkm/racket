@@ -16,23 +16,38 @@ define(['/javascript/controllers/module.js'], function (controllers) {
 		for (var i in $scope.racket.commodities) {
 	    	var id = $scope.racket.commodities[i].id;
 	    	$scope.commodities[id] = $scope.racket.commodities[i];
-	    	$scope.sellforms[id] = {};
-	    	$scope.restockforms[id] = {};
-	    	console.debug(JSON.stringify($scope.sellforms));
+	    	$scope.sellforms[id] = {
+	    		sold : 1	
+	    	};
+	    	$scope.restockforms[id] = {
+	    		restocked : 1
+	    	};
 	    }
 	  });
 
       //handle sell ops
       $scope.submitSellForm = function(id) {
-
+    	  var commodity = $scope.commodities[id];
     	  var form = $scope.sellforms[id];
-    	  console.debug('sell! ' + JSON.stringify($scope.sellforms[id]));
-    	  $scope.commodities[id].stock += parseInt($scope.sellforms[id].sold);
+    	  
+    	  if(commodity.stock < form.sold) {
+    		  alert('Not enough stock to sell that much!');
+    		  return false;
+    	  }
+    	  
+    	  $http.post('/commodity/sold/' + id + '/' + form.sold).success(function(){
+        	  $scope.commodities[id].stock -= parseInt($scope.sellforms[id].sold);
+    	  });
       }
       
       //handle restock ops
       $scope.submitRestockForm = function(id) {
+    	  var commodity = $scope.commodities[id];
+    	  var form = $scope.restockforms[id];
     	  
+    	  $http.post('/commodity/restock/' + id + '/' + form.restocked).success(function(){
+    		  $scope.commodities[id].stock += parseInt($scope.restockforms[id].restocked);
+    	  });
       }
   }]);
   

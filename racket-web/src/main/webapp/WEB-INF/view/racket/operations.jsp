@@ -8,7 +8,7 @@ controller: {{name}}
   <a ng-if="racket.canOperate" href="#/racket/operations/{{racket.id}}">Operations</a>
   <a ng-if="racket.canManage" href="#/racket/manage/{{racket.id}}">Manage</a>
   
-  <h4>Commodities: <button data-ng-click="wat()">Wat</button></h4>
+  <h4>Commodities</h4>
   <table class="table table-striped">
     <thead>
       <tr>
