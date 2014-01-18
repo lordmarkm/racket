@@ -8,11 +8,9 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -51,8 +49,8 @@ public class RacketControllerImpl extends GenericController implements RacketCon
 
 		Racket racket = rackets.findOne(id);
 		RacketInfo racketInfo = new RacketInfo(racket);
-		racketInfo.setCanOperate(rackets.canOperate(racket, principal.getName()));
-		racketInfo.setCanManage(rackets.canManage(racket, principal.getName()));
+		racketInfo.setCanOperate(rackets.canOperate(racket, name(principal)));
+		racketInfo.setCanManage(rackets.canManage(racket, name(principal)));
 
 		return new ResponseEntity<RacketInfo>(racketInfo, HttpStatus.OK);
 	}

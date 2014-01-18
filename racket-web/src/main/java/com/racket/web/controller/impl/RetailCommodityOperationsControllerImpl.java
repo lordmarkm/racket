@@ -33,7 +33,8 @@ public class RetailCommodityOperationsControllerImpl extends GenericController i
 		int currentAmount = commodity.getRetailDetails().getAmount();
 		commodity.getRetailDetails().setAmount(currentAmount + amount);
 		commodities.save(commodity);
-		return new ResponseEntity<String>(HttpStatus.OK);	}
+		return new ResponseEntity<String>(HttpStatus.OK);	
+	}
 
 	@Override
 	public ResponseEntity<String> sold(Principal principal, Long id, int amount) {

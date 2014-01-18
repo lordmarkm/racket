@@ -26,10 +26,10 @@ public class RacketCommodity extends AbstractEntity implements Commodity {
     private Racket racket;
 
     @Embedded
-    private RentalDetails rentalDetails;
+    private RentalDetails rentalDetails = new RentalDetails();
 
     @Embedded
-    private RetailDetails retailDetails;
+    private RetailDetails retailDetails = new RetailDetails();
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

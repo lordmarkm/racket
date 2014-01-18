@@ -13,7 +13,7 @@ public class RetailDetails {
      * Amount in stock, though how this number is used is up to the user
      */
     @Column
-    private int amount;
+    private int amount = 0;
 
     public int getAmount() {
         return amount;

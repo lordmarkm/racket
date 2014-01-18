@@ -20,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.baldy.commons.security.services.Roles;
 import com.racket.security.services.RacketUserDetailsService;
 
+
 /**
  * @author mbmartinez
  */

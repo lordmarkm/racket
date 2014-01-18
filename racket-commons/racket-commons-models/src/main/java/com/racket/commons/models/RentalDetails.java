@@ -30,13 +30,13 @@ public class RentalDetails {
     private DateTime rentalEnd;
 
     @Enumerated(EnumType.STRING)
-    private ChargingMethod chargingMethod;
+    private ChargingMethod chargingMethod = ChargingMethod.PER_MINUTE;
 
     /**
      * Such as how internet cafes round to the nearest half hour
      */
     @Enumerated(EnumType.STRING)
-    private RoundUp roundUp;
+    private RoundUp roundUp = RoundUp.NEXT_HALF_HOUR;
 
     public String toString() {
         return new ToStringCreator(this)
