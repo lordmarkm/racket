@@ -2,12 +2,9 @@ package com.racket.commons.services.custom.impl;
 
 import java.util.Set;
 
-import javax.annotation.Resource;
-
 import com.racket.commons.models.Racket;
 import com.racket.commons.models.RacketAssociation;
 import com.racket.commons.models.support.RacketAuthority;
-import com.racket.commons.services.RacketService;
 import com.racket.commons.services.RacketServiceCustom;
 
 /**

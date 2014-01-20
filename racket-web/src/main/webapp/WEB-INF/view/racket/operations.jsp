@@ -21,7 +21,7 @@ controller: {{name}}
       </tr>
     </thead>
     <tbody>
-      <tr data-ng-repeat="commodity in racket.commodities">
+      <tr data-ng-repeat="commodity in racket.commodities | orderBy:'name'">
         <td>{{commodity.id}}</td>
         <td>{{commodity.name}}</td>
         <td>{{commodity.description}}</td>
@@ -31,7 +31,7 @@ controller: {{name}}
             In stock: {{commodity.stock}}
           </div>
           <div ng-switch-when="RENTAL">
-            <div ng-if="commodity.rentalStart != 0">In use</div>
+            <div ng-if="commodity.rentalStart != 0">In use - started: {{formatTime(commodity.rentalStart)}}</div>
             <div ng-if="commodity.rentalStart == 0">Available</div>
           </div>
         </td>
@@ -52,7 +52,14 @@ controller: {{name}}
               </div>
             </form>
           </div>
-          <div ng-switch-when="RENTAL">It's rental</div>
+          <div ng-switch-when="RENTAL">
+            <div ng-if="commodity.rentalStart != 0">
+              <button ng-click="endRental(commodity.id)" class="btn btn-sm btn-primary">End Rental</button>
+            </div>
+            <div ng-if="commodity.rentalStart == 0">
+              <button ng-click="startRental(commodity.id)" class="btn btn-sm btn-success">Start Rental</button>
+            </div>
+          </div>
         </td>
       </tr>
     </tbody>

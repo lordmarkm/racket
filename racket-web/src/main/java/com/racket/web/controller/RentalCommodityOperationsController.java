@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.racket.web.dto.RentalTransactionInfo;
-
 /**
  * 
  * @author Mark
@@ -28,6 +26,6 @@ public interface RentalCommodityOperationsController {
 	@PreAuthorize("canOperateParent(#principal.name, #id)")
 	@RequestMapping("/rentalend/{id}")
 	@ResponseBody
-	ResponseEntity<RentalTransactionInfo> endRental(Principal principal, @PathVariable("id") Long id);
+	ResponseEntity<String> endRental(Principal principal, @PathVariable("id") Long id);
 
 }

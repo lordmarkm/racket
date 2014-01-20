@@ -1,4 +1,4 @@
-define(['/javascript/controllers/module.js'], function (controllers) {
+define(['/javascript/controllers/module.js', 'moment'], function (controllers, moment) {
   'use strict';
 
   controllers.controller('RacketOperationsCtrl', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams) {
@@ -25,6 +25,10 @@ define(['/javascript/controllers/module.js'], function (controllers) {
 	    }
 	  });
 
+      $scope.formatTime = function(millis) {
+    	  return moment(millis).fromNow();//format("ddd, h:mm a");
+      }
+      
       //handle sell ops
       $scope.submitSellForm = function(id) {
     	  var commodity = $scope.commodities[id];
@@ -48,6 +52,21 @@ define(['/javascript/controllers/module.js'], function (controllers) {
     	  $http.post('/commodity/restock/' + id + '/' + form.restocked).success(function(){
     		  $scope.commodities[id].stock += parseInt($scope.restockforms[id].restocked);
     	  });
+      }
+      
+      //handle rental start
+      $scope.startRental = function(id) {
+    	$http.post('/commodity/rentalstart/' + id).success(function(){
+    		$scope.commodities[id].rentalStart = new Date();
+    	});  
+      }
+
+      //handle rental end
+      $scope.endRental = function(id) {
+        $http.post('/commodity/rentalend/' + id).success(function() {
+          alert('Rental ended!');
+          $scope.commodities[id].rentalStart = 0;
+        });
       }
   }]);
   

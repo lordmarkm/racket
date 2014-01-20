@@ -11,7 +11,7 @@ import com.racket.commons.models.RacketCommodity;
 /**
  * @author Mark
  */
-public interface RacketCommodityService extends JpaRepository<RacketCommodity, Long> {
+public interface RacketCommodityService extends JpaRepository<RacketCommodity, Long>, RacketCommodityServiceCustom {
 
 	@Query("from RacketCommodity c where c.racket.id = ?1")
 	List<RacketCommodity> findByRacketId(Long racketId);
