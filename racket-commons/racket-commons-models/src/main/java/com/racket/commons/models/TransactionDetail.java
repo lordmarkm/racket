@@ -31,12 +31,16 @@ public class TransactionDetail {
      * Attachment label, probably entity name, used in the hyperlink
      */
     private String label;
-    
+
     /**
      * Id of the attachment, possibly operator or commodity
      */
     @Column
     private long attachment;
+
+    public TransactionDetail() {
+    	//
+    }
 
     public TransactionDetail(TransactionDetailType type, long attachmentId, String attachmentLabel, String message) {
         this.type = type;

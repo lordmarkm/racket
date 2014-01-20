@@ -1,11 +1,14 @@
 package com.racket.commons.models;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,6 +20,12 @@ import org.joda.time.DateTime;
 public class Transaction {
 
     public static final String table = "transactions";
+
+    @Id @GeneratedValue
+    private long id;
+
+    @Column
+    private BigDecimal value;
 
     @Column
     private String message;
@@ -48,7 +57,10 @@ public class Transaction {
     }
 
     public List<TransactionDetail> getDetails() {
-        return details == null ? new ArrayList<TransactionDetail>() : details;
+        if(details == null){
+        	this.details = new ArrayList<TransactionDetail>();
+        }
+        return details;
     }
 
     public void setDetails(List<TransactionDetail> details) {
@@ -56,11 +68,30 @@ public class Transaction {
     }
 
     public List<TransactionAnnotation> getAnnotations() {
-        return annotations == null ? new ArrayList<TransactionAnnotation>() : annotations;
+        if(annotations == null) {
+        	this.annotations = new ArrayList<TransactionAnnotation>();
+        }
+        return  annotations;
     }
 
     public void setAnnotations(List<TransactionAnnotation> annotations) {
         this.annotations = annotations;
     }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public BigDecimal getValue() {
+		return value;
+	}
+
+	public void setValue(BigDecimal value) {
+		this.value = value;
+	}
 
 }

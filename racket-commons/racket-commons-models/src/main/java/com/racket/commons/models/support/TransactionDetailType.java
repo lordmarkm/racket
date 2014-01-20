@@ -7,6 +7,8 @@ package com.racket.commons.models.support;
 public enum TransactionDetailType {
 
     OPERATOR_ID,
-    COMMODITY_ID
+    COMMODITY_ID,
+    RENTAL_START,
+    RENTAL_END
 
 }
