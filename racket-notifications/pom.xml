@@ -10,4 +10,7 @@
   <artifactId>racket-notifications</artifactId>
   <packaging>pom</packaging>
   <name>Racket :: Notifications</name>
+  <modules>
+  	<module>racket-notifications-models</module>
+  </modules>
 </project>
