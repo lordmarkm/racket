@@ -6,7 +6,9 @@ import org.apache.commons.lang.Validate;
 import org.joda.time.DateTime;
 
 import com.racket.commons.models.RacketCommodity;
+import com.racket.commons.models.support.ChargingMethod;
 import com.racket.commons.models.support.CommodityType;
+import com.racket.commons.models.support.RoundUp;
 
 /**
  * @author Mark
@@ -59,4 +61,14 @@ public class RacketCommodityInfo {
 		return racketCommodity.getUnit();
 	}
 
+	//rental details
+	public ChargingMethod getChargingMethod() {
+	    return racketCommodity.getRentalDetails().getChargingMethod();
+	}
+	public BigDecimal getPricePerMinute() {
+	    return racketCommodity.getRentalDetails().getPricePerMinute();
+	}
+	public RoundUp getRoundUp() {
+	    return racketCommodity.getRentalDetails().getRoundUp();
+	}
 }

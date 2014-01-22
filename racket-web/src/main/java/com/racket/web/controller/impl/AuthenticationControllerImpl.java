@@ -103,7 +103,6 @@ public class AuthenticationControllerImpl extends GenericController implements A
 
     @InitBinder
 	public void initBinder(WebDataBinder binder) {
-    	log.debug("Initbinder");
     	binder.setValidator(validator);
     }
 

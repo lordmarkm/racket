@@ -5,6 +5,8 @@ import java.security.Principal;
 import javax.annotation.Resource;
 
 import org.joda.time.DateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -23,7 +25,9 @@ import com.racket.web.controller.RentalCommodityOperationsController;
 @Component
 public class RentalCommodityOperationsControllerImpl extends GenericController implements RentalCommodityOperationsController {
 
-	@Resource
+    private static Logger log = LoggerFactory.getLogger(RentalCommodityOperationsControllerImpl.class);
+
+    @Resource
 	private RacketCommodityService commodities;
 
 	@Resource
@@ -34,16 +38,19 @@ public class RentalCommodityOperationsControllerImpl extends GenericController i
 
 	@Override
 	public ResponseEntity<String> startRental(Principal principal, Long id) {
-
+	    
 		RacketCommodity commodity = commodities.findOne(id);
 
 		if (commodity.getRentalDetails().getRentalStarted() != null) {
 			throw new IllegalArgumentException("It is in use!");
 		}
 
-		commodity.getRentalDetails().setRentalStarted(new DateTime());
+		commodity.getRentalDetails().setRentalStarted(DateTime.now());
 		commodities.save(commodity);
 
+		log.debug("Rental started on commodity={}, id={}, rentalstart={}", commodity.getName(), commodity.getId(),
+		        commodity.getRentalDetails().getRentalStarted());
+		
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
 

@@ -7,7 +7,10 @@ import javax.validation.constraints.NotNull;
 import org.springframework.core.style.ToStringCreator;
 
 import com.racket.commons.models.RacketCommodity;
+import com.racket.commons.models.RentalDetails;
+import com.racket.commons.models.support.ChargingMethod;
 import com.racket.commons.models.support.CommodityType;
+import com.racket.commons.models.support.RoundUp;
 
 /**
  * @author Mark
@@ -26,10 +29,15 @@ public class CommodityForm {
 	
 	@NotNull
 	private CommodityType type;
-	
+
 	private BigDecimal price;
 	private String unit;
-	
+
+	//rental details
+	private RoundUp roundUp;
+	private ChargingMethod chargingMethod;
+	private BigDecimal pricePerMinute;
+
 	@Override
 	public String toString() {
 		return new ToStringCreator(this)
@@ -54,7 +62,14 @@ public class CommodityForm {
 		if (id != 0) {
 			commodity.setId(id);
 		}
-		
+
+		//rental details
+		RentalDetails rentalDetails = new RentalDetails();
+		rentalDetails.setChargingMethod(chargingMethod);
+		rentalDetails.setPricePerMinute(pricePerMinute);
+		rentalDetails.setRoundUp(roundUp);
+		commodity.setRentalDetails(rentalDetails);
+
 		return commodity;
 	}
 
@@ -113,5 +128,29 @@ public class CommodityForm {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+    public ChargingMethod getChargingMethod() {
+        return chargingMethod;
+    }
+
+    public void setChargingMethod(ChargingMethod chargingMethod) {
+        this.chargingMethod = chargingMethod;
+    }
+
+    public BigDecimal getPricePerMinute() {
+        return pricePerMinute;
+    }
+
+    public void setPricePerMinute(BigDecimal pricePerMinute) {
+        this.pricePerMinute = pricePerMinute;
+    }
+
+    public RoundUp getRoundUp() {
+        return roundUp;
+    }
+
+    public void setRoundUp(RoundUp roundUp) {
+        this.roundUp = roundUp;
+    }
 	
 }

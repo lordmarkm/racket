@@ -1,5 +1,7 @@
 package com.racket.commons.models;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
@@ -31,6 +33,12 @@ public class RentalDetails {
 
     @Enumerated(EnumType.STRING)
     private ChargingMethod chargingMethod = ChargingMethod.PER_MINUTE;
+
+    /**
+     * Price is computed from here
+     */
+    @Column
+    private BigDecimal pricePerMinute;
 
     /**
      * Such as how internet cafes round to the nearest half hour
@@ -77,5 +85,13 @@ public class RentalDetails {
 
     public void setRoundUp(RoundUp roundUp) {
         this.roundUp = roundUp;
+    }
+
+    public BigDecimal getPricePerMinute() {
+        return pricePerMinute;
+    }
+
+    public void setPricePerMinute(BigDecimal pricePerMinute) {
+        this.pricePerMinute = pricePerMinute;
     }
 }

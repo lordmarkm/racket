@@ -1,12 +1,15 @@
 define(['/javascript/controllers/module.js'], function (controllers) {
   'use strict';
 
-  controllers.controller('CommodityEditCtrl', ['$scope', '$http', '$stateParams', 'commodityTypes', function($scope, $http, $stateParams, commodityTypes) {
+  controllers.controller('CommodityEditCtrl', ['$scope', '$http', '$stateParams', 'commodityTypes', 'roundUpTypes', function($scope, $http, $stateParams, commodityTypes, roundUpTypes) {
 
 	  $scope.name = 'CommodityEditCtrl';
       $scope.commodityId = $stateParams.commodityId;
-      $scope.editCommodity = {};
+      $scope.editCommodity = {
+        type : 'RETAIL'		  
+      };
       $scope.commodityTypes = commodityTypes;
+      $scope.roundUpTypes = roundUpTypes;
 
       $http.get('/commodity/commodityinfo/' + $stateParams.commodityId).success(function(commodity) {
 		setCommodity(commodity);
@@ -29,8 +32,15 @@ define(['/javascript/controllers/module.js'], function (controllers) {
  	 	      description : commodity.description,
  	 	      price : commodity.price,
  	 	      unit : commodity.unit,
- 	 	      type : commodity.type
+ 	 	      type : commodity.type,
+ 	 	      chargingMethod: commodity.chargingMethod,
+ 	 	      pricePerMinute: commodity.pricePerMinute,
+ 	 	      roundUp: commodity.roundUp
  	    };
+     }
+     
+     $scope.done = function(){
+    	 history.back();
      }
   }]);
   
