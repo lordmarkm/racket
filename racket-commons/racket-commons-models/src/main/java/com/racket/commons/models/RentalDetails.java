@@ -38,7 +38,13 @@ public class RentalDetails {
      * Price is computed from here
      */
     @Column
-    private BigDecimal pricePerMinute;
+    private BigDecimal pricePerMinute = BigDecimal.valueOf(0);
+
+    /**
+     * Minimum charge
+     */
+    @Column
+    private BigDecimal minimumCharge = BigDecimal.valueOf(0.0);
 
     /**
      * Such as how internet cafes round to the nearest half hour
@@ -94,4 +100,13 @@ public class RentalDetails {
     public void setPricePerMinute(BigDecimal pricePerMinute) {
         this.pricePerMinute = pricePerMinute;
     }
+    
+	public BigDecimal getMinimumCharge() {
+		return minimumCharge;
+	}
+
+	public void setMinimumCharge(BigDecimal minimumCharge) {
+		this.minimumCharge = minimumCharge;
+	}
+
 }

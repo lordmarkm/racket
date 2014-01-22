@@ -68,6 +68,9 @@ public class RacketCommodityInfo {
 	public BigDecimal getPricePerMinute() {
 	    return racketCommodity.getRentalDetails().getPricePerMinute();
 	}
+	public BigDecimal getMinimumCharge() {
+		return racketCommodity.getRentalDetails().getMinimumCharge();
+	}
 	public RoundUp getRoundUp() {
 	    return racketCommodity.getRentalDetails().getRoundUp();
 	}

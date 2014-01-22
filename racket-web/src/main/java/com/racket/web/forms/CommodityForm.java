@@ -30,13 +30,14 @@ public class CommodityForm {
 	@NotNull
 	private CommodityType type;
 
-	private BigDecimal price;
+	private BigDecimal price = BigDecimal.valueOf(0);
 	private String unit;
 
 	//rental details
-	private RoundUp roundUp;
-	private ChargingMethod chargingMethod;
-	private BigDecimal pricePerMinute;
+	private RoundUp roundUp = RoundUp.NONE;
+	private ChargingMethod chargingMethod = ChargingMethod.PER_MINUTE;
+	private BigDecimal pricePerMinute = BigDecimal.valueOf(0);
+	private BigDecimal minimumCharge = BigDecimal.valueOf(0);
 
 	@Override
 	public String toString() {
@@ -68,6 +69,7 @@ public class CommodityForm {
 		rentalDetails.setChargingMethod(chargingMethod);
 		rentalDetails.setPricePerMinute(pricePerMinute);
 		rentalDetails.setRoundUp(roundUp);
+		rentalDetails.setMinimumCharge(minimumCharge);
 		commodity.setRentalDetails(rentalDetails);
 
 		return commodity;
@@ -152,5 +154,13 @@ public class CommodityForm {
     public void setRoundUp(RoundUp roundUp) {
         this.roundUp = roundUp;
     }
+
+	public BigDecimal getMinimumCharge() {
+		return minimumCharge;
+	}
+
+	public void setMinimumCharge(BigDecimal minimumCharge) {
+		this.minimumCharge = minimumCharge;
+	}
 	
 }

@@ -45,7 +45,11 @@ public class RacketCommodityServiceCustomImpl implements RacketCommodityServiceC
 	    DateTime chargeableEndTime = roundUp(rentalEnded, commodity.getRentalDetails().getRoundUp());
 	    log.debug("Rental started={}, ended={}", rentalStarted, rentalEnded);
 	    int chargeableMinutes = Minutes.minutesBetween(rentalStarted, chargeableEndTime).getMinutes();
+	    log.debug("Computed chargeable minutes = {}", chargeableMinutes);
 	    BigDecimal value = commodity.getRentalDetails().getPricePerMinute().multiply(BigDecimal.valueOf(chargeableMinutes));
+	    if (value.compareTo(commodity.getRentalDetails().getMinimumCharge()) < 0) {
+	    	value = commodity.getRentalDetails().getMinimumCharge();
+	    }
 	    transaction.setValue(value);
 
 	    //Add Rental transaction details
