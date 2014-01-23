@@ -86,6 +86,12 @@
             <select class="form-control" id="editCommodity.roundUp" data-ng-model="editCommodity.roundUp" ng-options="roundUp as roundUp for roundUp in roundUpTypes"></select>
           </div>
         </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="editCommodity.minimumCharge">Minimum charge</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="editCommodity.minimumCharge" data-ng-model="editCommodity.minimumCharge" />
+          </div>
+        </div>
       </div>
     </div>
     <div ng-switch-when="RETAIL">

@@ -35,7 +35,8 @@ define(['/javascript/controllers/module.js'], function (controllers) {
  	 	      type : commodity.type,
  	 	      chargingMethod: commodity.chargingMethod,
  	 	      pricePerMinute: commodity.pricePerMinute,
- 	 	      roundUp: commodity.roundUp
+ 	 	      roundUp: commodity.roundUp,
+ 	 	      minimumCharge: commodity.minimumCharge
  	    };
      }
      

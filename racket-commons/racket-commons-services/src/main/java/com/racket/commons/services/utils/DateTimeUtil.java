@@ -2,6 +2,7 @@ package com.racket.commons.services.utils;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
+import org.joda.time.Minutes;
 
 import com.racket.commons.models.support.RoundUp;
 
@@ -11,27 +12,22 @@ import com.racket.commons.models.support.RoundUp;
  */
 public class DateTimeUtil {
 
-    public static DateTime roundUp(final DateTime dateTime, RoundUp roundUp) {
+    public static int getRoundedChargeableMinutes(DateTime startTime, DateTime endTime, RoundUp roundUp) {
         int minutes = 0;
         switch (roundUp) {
         case NONE:
-            return dateTime;
+            return Minutes.minutesBetween(startTime, endTime).getMinutes();
         case NEXT_HALF_HOUR:
-            minutes = dateTime.getMinuteOfHour();
-            if (minutes == 0 || minutes == 30) {
-                return dateTime;
-            } else {
-                return dateTime.plusMinutes(30 - (minutes%30));
-            }
+            minutes = Minutes.minutesBetween(startTime, endTime).getMinutes();
+            return minutes + (30 - minutes%30);
         case NEXT_HOUR:
-            return dateTime.hourOfDay().roundCeilingCopy();
-        case NEXT_DAY:
-            return dateTime.dayOfMonth().roundCeilingCopy();
+            minutes = Minutes.minutesBetween(startTime, endTime).getMinutes();
+            return minutes + (60 - minutes%60);        
         default:
             throw new IllegalArgumentException("Roundup not supported: " + roundUp);
         }
     }
-    
+
     /**
 	 * http://stackoverflow.com/questions/11222316/how-to-round-datetime-of-joda-library-to-the-nearest-x-minutes
 	 */

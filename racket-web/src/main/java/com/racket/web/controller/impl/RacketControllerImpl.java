@@ -45,7 +45,7 @@ public class RacketControllerImpl extends GenericController implements RacketCon
 
 	@Override
 	public ResponseEntity<RacketInfo> racketInfo(Principal principal, Long id) {
-		log.debug("Racket info requested. user={}, id={}", name(principal), id);
+		//log.debug("Racket info requested. user={}, id={}", name(principal), id);
 
 		Racket racket = rackets.findOne(id);
 		RacketInfo racketInfo = new RacketInfo(racket);

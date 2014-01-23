@@ -1,16 +1,9 @@
-controller: {{name}}
+<#import "./racketnav.ftl" as racketnav />
 
 <div>
-  <div>racket id: {{racket.id}}</div>
-  <div>racket name: {{racket.name}}</div>
-  <div>description: {{racket.description}}</div>
+  <@racketnav.racketnav 'manage' />
   
-  <a ng-if="racket.canOperate" href="#/racket/operations/{{racket.id}}">Operations</a>
-  <a ng-if="racket.canManage" href="#/racket/manage/{{racket.id}}">Manage</a>
-  
-  <button data-ng-click="deleteRacket()">Delete this racket</button>
-  
-  <h4>Commodities:</h4>
+  <h4>Commodities</h4>
   <table class="table">
     <thead>
       <tr>
@@ -31,7 +24,7 @@ controller: {{name}}
 
         <td ng-switch on="commodity.type">
           <span ng-switch-when="RETAIL">
-            <span ng-if="commodity.price">{{commodity.price}}</span>
+            <span ng-if="commodity.price">{{commodity.price}} <span ng-if="commodity.unit != null && commodity.unit.length > 0">per {{commodity.unit}}</span></span>
             <span ng-if="!commodity.price">Price not specified</span>
           </span>
           <span ng-switch-when="RENTAL">
@@ -47,18 +40,34 @@ controller: {{name}}
     </tbody>
   </table>
   
-  <h4>New commodity:</h4>
-  <form data-ng-submit="submitNewCommodity()">
-    <ul>
-      <li>Name: <input data-ng-model="newCommodity.name" /></li>
-      <li>Description: <input data-ng-model="newCommodity.description" /></li>
-      <li>Type:
-        <select data-ng-model="newCommodity.type">
-          <option data-ng-repeat="type in commodityTypes">{{type}}</option>
-        </select>
-      </li>
-      <li><input type="submit" /></li>
-    </ul>
+  <h4>New commodity</h4>
+  <form class="form-horizontal" data-ng-submit="submitNewCommodity()">
+    <div class="form-group">
+	    <label class="col-sm-2 control-label" for="newCommodity.name">Name</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="newCommodity.name" data-ng-model="newCommodity.name" />
+	    </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="newCommodity.description">Description</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="newCommodity.description" data-ng-model="newCommodity.description" />
+      </div>
+    </div>
+    <div class="form-group">
+	    <label class="col-sm-2 control-label" for="newCommodity.type">Type</label>
+	    <div class="col-sm-10">
+	      <select class="form-control" id="newCommodity.type" data-ng-model="newCommodity.type" ng-options="type as type for type in commodityTypes"></select>
+	    </div>
+    </div>
+    <div class="form-group">
+	    <div class="col-sm-10 col-sm-push-2">
+	      <button type="submit" class="btn btn-primary">Save</button>
+	    </div>
+    </div>
   </form>
   
+  <hr>
+  
+  <button class="btn-sm btn-danger" data-ng-click="deleteRacket()">Delete this racket</button>
 </div>

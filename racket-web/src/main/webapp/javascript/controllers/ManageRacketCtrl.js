@@ -1,7 +1,7 @@
 define(['/javascript/controllers/module.js'], function (controllers) {
   'use strict';
 
-  controllers.controller('ManageRacketCtrl', ['$scope', '$http', '$state', '$stateParams', 'RacketService', function($scope, $http, $state, $stateParams, racketService) {
+  controllers.controller('ManageRacketCtrl', ['$scope', '$http', '$state', '$stateParams', 'RacketService', 'commodityTypes', function($scope, $http, $state, $stateParams, racketService, commodityTypes) {
 	  
 	  $scope.name = 'ManageRacketCtrl';
       $scope.racket = {};
@@ -20,12 +20,16 @@ define(['/javascript/controllers/module.js'], function (controllers) {
     	});
       }
 
-      $scope.commodityTypes = ['RENTAL', 'RETAIL'];
+      $scope.commodityTypes = commodityTypes;
+      $scope.newCommodity = {
+    	  type: 'RETAIL'
+      }
       $scope.submitNewCommodity = function() {
     	  this.newCommodity.racketId = $scope.racketId;
     	  console.debug('About to submit new commodity request: ' + JSON.stringify(this.newCommodity));
     	  $http.post('/commodity/new', this.newCommodity).success(function(commodity) {
     		  $scope.racket.commodities.push(commodity);
+    		  $scope.newCommodity = {type:'RETAIL'};
     	  });
       }
       
