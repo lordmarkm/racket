@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.racket.notifications.model.Notification;
+
 @Controller
 @RequestMapping("/commodity")
 public interface RetailCommodityOperationsController {
@@ -19,7 +21,7 @@ public interface RetailCommodityOperationsController {
 
 	@PreAuthorize("canOperateParent(#principal.name, #id)")
     @RequestMapping(value = "/sold/{id}/{amount}")
-    public ResponseEntity<String> sold(Principal principal, @PathVariable("id") Long id,
+    public ResponseEntity<Notification> sold(Principal principal, @PathVariable("id") Long id,
             @PathVariable("amount") int amount);
 
 }

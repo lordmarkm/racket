@@ -30,7 +30,30 @@ public class RacketCommodityServiceCustomImpl implements RacketCommodityServiceC
 
     @Resource
 	private RacketCommodityService commodities;
-	
+    
+    @Override
+    public Transaction sold(RacketCommodity commodity, int amount) {
+        int currentAmount = commodity.getRetailDetails().getAmount();
+        commodity.getRetailDetails().setAmount(currentAmount - amount);
+        commodities.save(commodity);
+        
+        Transaction transaction = new Transaction();
+        transaction.setDate(DateTime.now());
+        transaction.setMessage(amount + " of " + commodity.getName() + " sold on " + transaction.getDate().toString());
+        transaction.setValue(commodity.getPrice().multiply(BigDecimal.valueOf(amount)));
+        
+        //Add retail transaction details
+        List<TransactionDetail> details = transaction.getDetails();
+
+        TransactionDetail commodityDetail = new TransactionDetail(COMMODITY_ID, commodity.getId(), commodity.getName(), null);
+        details.add(commodityDetail);
+        
+        return transaction;
+    }
+    
+    /**
+     * Rental op
+     */
 	@Override
 	public Transaction completeRentalTransaction(RacketCommodity commodity) {
 		// TODO
@@ -71,5 +94,4 @@ public class RacketCommodityServiceCustomImpl implements RacketCommodityServiceC
 
 		return transaction;
 	}
-
 }

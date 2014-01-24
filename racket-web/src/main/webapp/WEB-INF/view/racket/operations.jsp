@@ -1,6 +1,7 @@
 <#import "./racketnav.ftl" as racketnav />
 
 <div>
+  <div ng-if="notif != null && notif.message != null"class="alert alert-info">{{notif.message}}</div>
   <@racketnav.racketnav 'operations' />
   
   <h4>Commodities</h4>

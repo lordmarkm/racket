@@ -62,7 +62,7 @@ public class PersistenceConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactory.setDataSource(dataSource());
         entityManagerFactory.setPackagesToScan(new String[] { "com.baldy.commons.models", 
-                "com.baldy.commons.security.models", "com.racket.commons.models" });
+                "com.baldy.commons.security.models", "com.racket.commons.models", "com.racket.notifications.model" });
         entityManagerFactory.setPersistenceProvider(new HibernatePersistence());
         entityManagerFactory.setJpaProperties(hibernateProperties());
         entityManagerFactory.afterPropertiesSet();

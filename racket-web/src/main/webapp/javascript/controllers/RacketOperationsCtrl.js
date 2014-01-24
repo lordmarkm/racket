@@ -39,8 +39,9 @@ define(['/javascript/controllers/module.js', 'moment'], function (controllers, m
     		  return false;
     	  }
     	  
-    	  $http.post('/commodity/sold/' + id + '/' + form.sold).success(function(){
+    	  $http.post('/commodity/sold/' + id + '/' + form.sold).success(function(notif){
         	  $scope.commodities[id].stock -= parseInt($scope.sellforms[id].sold);
+        	  $scope.notif = notif;
     	  });
       }
       
@@ -63,9 +64,10 @@ define(['/javascript/controllers/module.js', 'moment'], function (controllers, m
 
       //handle rental end
       $scope.endRental = function(id) {
-        $http.post('/commodity/rentalend/' + id).success(function() {
+        $http.post('/commodity/rentalend/' + id).success(function(notif) {
           alert('Rental ended!');
           $scope.commodities[id].rentalStart = 0;
+          $scope.notif = notif;
         });
       }
   }]);

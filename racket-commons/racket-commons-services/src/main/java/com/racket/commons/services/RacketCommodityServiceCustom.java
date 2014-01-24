@@ -8,6 +8,14 @@ import com.racket.commons.models.Transaction;
  */
 public interface RacketCommodityServiceCustom {
 
+    /*
+     * Retail ops
+     */
+    Transaction sold(RacketCommodity commodity, int amount);
+    
+    /*
+     * Rental ops
+     */
     Transaction completeRentalTransaction(RacketCommodity commodity);
 
 }

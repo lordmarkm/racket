@@ -1,10 +1,15 @@
 package com.racket.notifications.service;
 
-import com.racket.commons.models.Transaction;
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.racket.notifications.model.Notification;
+import com.racket.notifications.service.custom.NotificationServiceCustom;
 
-public interface NotificationService {
+public interface NotificationService extends JpaRepository<Notification, Long>, NotificationServiceCustom {
 
-    Notification compose(Transaction transaction);
+    List<Notification> findByRacket(Long id, Pageable pageRequest);
 
 }
