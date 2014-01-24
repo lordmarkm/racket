@@ -2,6 +2,8 @@ package com.racket.web.controller;
 
 import java.security.Principal;
 
+import javax.management.Notification;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,6 @@ public interface RentalCommodityOperationsController {
 	@PreAuthorize("canOperateParent(#principal.name, #id)")
 	@RequestMapping("/rentalend/{id}")
 	@ResponseBody
-	ResponseEntity<String> endRental(Principal principal, @PathVariable("id") Long id);
+	ResponseEntity<Notification> endRental(Principal principal, @PathVariable("id") Long id);
 
 }

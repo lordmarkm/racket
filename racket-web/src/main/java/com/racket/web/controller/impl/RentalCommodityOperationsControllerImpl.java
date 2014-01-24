@@ -20,6 +20,8 @@ import com.racket.commons.models.support.TransactionDetailType;
 import com.racket.commons.services.RacketCommodityService;
 import com.racket.commons.services.RacketeerService;
 import com.racket.commons.services.TransactionService;
+import com.racket.notifications.model.Notification;
+import com.racket.notifications.service.NotificationService;
 import com.racket.web.controller.RentalCommodityOperationsController;
 
 @Component
@@ -35,6 +37,9 @@ public class RentalCommodityOperationsControllerImpl extends GenericController i
 
 	@Resource
 	private TransactionService transactions;
+
+	@Resource
+	private NotificationService notifs;
 
 	@Override
 	public ResponseEntity<String> startRental(Principal principal, Long id) {
@@ -55,7 +60,7 @@ public class RentalCommodityOperationsControllerImpl extends GenericController i
 	}
 
 	@Override
-	public ResponseEntity<String> endRental(Principal principal, Long id) {
+	public ResponseEntity<Notification> endRental(Principal principal, Long id) {
 
 		RacketCommodity commodity = commodities.findOne(id);
 		if (commodity.getRentalDetails().getRentalStarted() == null) {
@@ -71,7 +76,9 @@ public class RentalCommodityOperationsControllerImpl extends GenericController i
 		transaction.getDetails().add(operatorDetail);
 		transactions.save(transaction);
 
-		return new ResponseEntity<String>(HttpStatus.OK);
+		Notification notif = notifs.compose(transaction);
+
+		return new ResponseEntity<Notification>(notif, HttpStatus.OK);
 	}
 
 }

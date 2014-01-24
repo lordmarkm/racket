@@ -44,6 +44,16 @@
       <artifactId>racket-security</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>racket-notifications</groupId>
+      <artifactId>racket-notifications-models</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>racket-notifications</groupId>
+      <artifactId>racket-notifications-services</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 
   </dependencies>
 

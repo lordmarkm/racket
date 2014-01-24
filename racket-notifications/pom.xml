@@ -12,5 +12,6 @@
   <name>Racket :: Notifications</name>
   <modules>
   	<module>racket-notifications-models</module>
+  	<module>racket-notifications-services</module>
   </modules>
 </project>
