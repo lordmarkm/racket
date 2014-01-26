@@ -26,7 +26,11 @@ define(['/javascript/app.js'], function(app) {
     		templateUrl: '/racketoperations',
     		controller: 'RacketOperationsCtrl'
     	});
-    	
+    	$stateProvider.state('racketnotifs', {
+    		url: '/racket/notifs/{racketId}',
+    		templateUrl: '/racket/notifs',
+    		controller: 'RacketNotifsCtrl'
+    	});
     	//commodity states
     	$stateProvider.state('editcommodity', {
     		url: '/commodity/edit/{racketId}/{commodityId}',

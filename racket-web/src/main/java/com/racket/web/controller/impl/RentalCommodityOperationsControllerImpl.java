@@ -76,9 +76,9 @@ public class RentalCommodityOperationsControllerImpl extends GenericController i
 		transaction.getDetails().add(operatorDetail);
 		transactions.save(transaction);
 
-		Notification notif = notifs.compose(transaction);
+		Notification notif = notifs.compose(commodity.getRacket(), transaction);
 
-		return new ResponseEntity<Notification>(notif, HttpStatus.OK);
+		return new ResponseEntity<NotificationInfo>(notif, HttpStatus.OK);
 	}
 
 }

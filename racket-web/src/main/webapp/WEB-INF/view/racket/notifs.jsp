@@ -7,7 +7,9 @@
   <h4>Notifications</h4>
   
   <ul>
-    <li ng-repeat
+    <li ng-repeat="notif in notifs">
+      {{notif.message}}
+    </li>
   </ul>
   
 </div>
