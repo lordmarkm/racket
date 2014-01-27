@@ -6,9 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
 
 /**
  * Annotation to a transaction, possibly a correction
@@ -23,6 +25,19 @@ public class TransactionAnnotation {
     @Id @GeneratedValue
     private long id;
 
+    /**
+     * Annotation author
+     */
+    @ManyToOne
+    private Racketeer author;
+
+    /**
+     * Annotation date
+     */
+    @Column
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    private DateTime date;
+    
     /**
      * Add a number value here if value is added/subtracted to a transaction
      */
@@ -64,6 +79,30 @@ public class TransactionAnnotation {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Racketeer getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Racketeer author) {
+        this.author = author;
+    }
+
+    public DateTime getDate() {
+        return date;
+    }
+
+    public void setDate(DateTime date) {
+        this.date = date;
     }
 
 }

@@ -2,6 +2,9 @@ package com.racket.web.dto;
 
 import java.math.BigDecimal;
 
+import org.joda.time.DateTime;
+
+import com.racket.commons.models.Racketeer;
 import com.racket.commons.models.TransactionAnnotation;
 
 /**
@@ -31,6 +34,14 @@ public class TransactionAnnotationInfo {
 
     public String toString() {
         return transactionAnnotation.toString();
+    }
+
+    public String getAuthor() {
+        return transactionAnnotation.getAuthor().getAccount().getUsername();
+    }
+
+    public DateTime getDate() {
+        return transactionAnnotation.getDate();
     }
 
 }
