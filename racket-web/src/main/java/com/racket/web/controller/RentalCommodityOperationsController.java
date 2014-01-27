@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.racket.notifications.model.Notification;
+import com.racket.web.dto.NotificationInfo;
 
 /**
- * 
  * @author Mark
- *
  */
 @Controller
 @RequestMapping("/commodity")
@@ -28,6 +26,6 @@ public interface RentalCommodityOperationsController {
 	@PreAuthorize("canOperateParent(#principal.name, #id)")
 	@RequestMapping("/rentalend/{id}")
 	@ResponseBody
-	ResponseEntity<Notification> endRental(Principal principal, @PathVariable("id") Long id);
+	ResponseEntity<NotificationInfo> endRental(Principal principal, @PathVariable("id") Long id);
 
 }

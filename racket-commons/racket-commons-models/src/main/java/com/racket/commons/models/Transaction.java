@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,6 +22,8 @@ public class Transaction {
 
     public static final String table = "transactions";
 
+    public static final String FIELD_DATE = "date";
+
     @Id @GeneratedValue
     private long id;
 
@@ -30,6 +33,9 @@ public class Transaction {
     @Column
     private String message;
 
+    @ManyToOne(optional = false)
+    private Racket racket;
+    
     @Column
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")    
     private DateTime date;
@@ -93,5 +99,13 @@ public class Transaction {
 	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
+
+    public Racket getRacket() {
+        return racket;
+    }
+
+    public void setRacket(Racket racket) {
+        this.racket = racket;
+    }
 
 }

@@ -9,6 +9,7 @@
 	<li <#if activeId == 'operations'>class="active"</#if>><a ng-if="racket.canOperate" href="#/racket/operations/{{racket.id}}">Operations</a>
 	<li <#if activeId == 'manage'>class="active"</#if>><a ng-if="racket.canManage" href="#/racket/manage/{{racket.id}}">Manage</a>
   <li <#if activeId == 'notifs'>class="active"</#if>><a href="#racket/notifs/{{racket.id}}">Notifs</a>
+  <li <#if activeId == 'transactions'>class="active"</#if>><a href="#racket/transactions/{{racket.id}}">Transactions</a>
 </ul>
 
 </#macro>

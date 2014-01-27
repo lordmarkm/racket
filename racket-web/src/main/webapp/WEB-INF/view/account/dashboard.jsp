@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="<@spring.url '/libs/bootstrap-3.0.3/css/bootstrap.min.css' />" />
   <link rel="stylesheet" href="<@spring.url '/libs/bootstrap-3.0.3/css/bootstrap-theme.min.css' />" />
   <link rel="stylesheet" href="<@spring.url '/libs/plugolabs/css/fam-icons.css' />" />
+  <link rel="stylesheet" href="<@spring.url '/css/racket.css' />" />
 </head>
 
 <body>

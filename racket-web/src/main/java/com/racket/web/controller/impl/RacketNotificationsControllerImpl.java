@@ -14,17 +14,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.baldy.commons.web.controller.GenericController;
+import com.google.common.collect.Lists;
 import com.racket.commons.models.Racket;
 import com.racket.commons.services.RacketService;
 import com.racket.notifications.model.Notification;
 import com.racket.notifications.service.NotificationService;
-import com.racket.web.controller.NotificationsController;
+import com.racket.web.controller.RacketNotificationsController;
+import com.racket.web.dto.NotificationInfo;
 
 /**
  * @author mbmartinez
  */
 @Component
-public class NotificationsControllerImpl extends GenericController implements NotificationsController {
+public class RacketNotificationsControllerImpl extends GenericController implements RacketNotificationsController {
 
     @Resource
     private NotificationService notifs;
@@ -43,8 +45,13 @@ public class NotificationsControllerImpl extends GenericController implements No
 
     	Racket racket = rackets.findOne(id);
         Pageable pageRequest = new PageRequest(start, end);
-        return new ResponseEntity<List<NotificationInfo>>(notifs.findByRacket(racket, pageRequest), HttpStatus.OK);
+        
+        List<NotificationInfo> dtos = Lists.newArrayList();
+        for (Notification notif : notifs.findByRacket(racket, pageRequest)) {
+            dtos.add(new NotificationInfo(notif));
+        }
 
+        return new ResponseEntity<List<NotificationInfo>>(dtos, HttpStatus.OK);
     }
 
 }

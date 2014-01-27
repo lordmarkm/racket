@@ -45,7 +45,7 @@ public class RacketCommodityServiceCustomImpl implements RacketCommodityServiceC
         //Add retail transaction details
         List<TransactionDetail> details = transaction.getDetails();
 
-        TransactionDetail commodityDetail = new TransactionDetail(COMMODITY_ID, commodity.getId(), commodity.getName(), null);
+        TransactionDetail commodityDetail = new TransactionDetail(COMMODITY_ID, commodity.getId(), "Commodity", commodity.getName());
         details.add(commodityDetail);
         
         return transaction;
@@ -79,7 +79,7 @@ public class RacketCommodityServiceCustomImpl implements RacketCommodityServiceC
 	    //Add Rental transaction details
 	    List<TransactionDetail> details = transaction.getDetails();
 
-	    TransactionDetail commodityDetail = new TransactionDetail(COMMODITY_ID, commodity.getId(), commodity.getName(), null);
+	    TransactionDetail commodityDetail = new TransactionDetail(COMMODITY_ID, commodity.getId(), "Commodity", commodity.getName());
 	    details.add(commodityDetail);
 
 	    TransactionDetail rentalStartDetail = new TransactionDetail(RENTAL_START, 0, "Rental started", commodity.getRentalDetails().getRentalStarted().toString());

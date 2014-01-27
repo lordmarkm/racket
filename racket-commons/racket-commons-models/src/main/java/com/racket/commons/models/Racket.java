@@ -1,5 +1,6 @@
 package com.racket.commons.models;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -26,6 +27,9 @@ public class Racket extends AbstractEntity {
     @OneToMany(cascade=CascadeType.ALL)
     private Set<RacketCommodity> commodities;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Transaction> transactions;
+
     public Racketeer getRacketeer() {
         return racketeer;
     }
@@ -48,6 +52,14 @@ public class Racket extends AbstractEntity {
 
     public void setCommodities(Set<RacketCommodity> commodities) {
         this.commodities = commodities;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
 }
