@@ -1,6 +1,7 @@
 <#import "./racketnav.ftl" as racketnav />
 
 <div>
+  <div ng-if="notif != null && notif.message != null"class="alert alert-info">{{notif.message}}</div>
   <@racketnav.racketnav 'manage' />
   
   <h4>Commodities</h4>
@@ -67,7 +68,41 @@
     </div>
   </form>
   
+  <h4>New expense</h4>
+  <form class="form-horizontal" data-ng-submit="submitNewExpense()">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="newExpense.description">Description</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="newExpense.description" data-ng-model="newExpense.description" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="newExpense.value">Value</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="newExpense.value" data-ng-model="newExpense.value" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="newExpense.classification">Classification</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="newExpense.classification" data-ng-model="newExpense.classification" ng-options="classification as classification for classification in classifications"></select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="newExpense.newClassification">Create New classification</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="newExpense.newClassification" data-ng-model="newExpense.newClassification" />
+        <p class="help-block">Overrides 'Classification' dropdown value if not empty</p>
+      </div>      
+    </div>
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-push-2">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
+
   <hr>
-  
+
   <button class="btn-sm btn-danger" data-ng-click="deleteRacket()">Delete this racket</button>
 </div>

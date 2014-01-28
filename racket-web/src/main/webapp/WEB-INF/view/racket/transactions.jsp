@@ -46,10 +46,14 @@
     </div>
     
     <div class="bs-callout" ng-show="transaction.annotations.length > 0">
-      <small class="light-grey bold">ANNOTATIONS</small>
-      <div class="bs-callout bs-callout-info" ng-repeat="annotation in transaction.annotations">
-        <span class="bold">{{annotation.author}}</span> {{annotation.title}}<span ng-if="annotation.value">: {{annotation.value}}</span>
-        <div><small>{{fromNow(annotation.date)}}</small></div>
+      <small ng-click="showAnnotations[transaction.id] = !showAnnotations[transaction.id]" 
+        class="light-grey bold pointer">ANNOTATIONS <span class="badge">{{transaction.annotations.length}}</span>
+      </small>
+      <div ng-show="showAnnotations[transaction.id]">
+	      <div class="bs-callout bs-callout-info" ng-repeat="annotation in transaction.annotations">
+	        <span class="bold">{{annotation.author}}</span> {{annotation.title}}<span ng-if="annotation.value">: {{annotation.value}}</span>
+	        <div><small>{{fromNow(annotation.date)}}</small></div>
+	      </div>
       </div>
     </div>
 

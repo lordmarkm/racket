@@ -12,6 +12,7 @@ define(['/javascript/controllers/module.js', 'moment'], function (controllers, m
     	$scope.transactions = {};
     	$scope.annotationforms = {};
     	$scope.showDetails = {};
+    	$scope.showAnnotations = {};
     	$scope.showAnnotationForm = {};
     	$scope.start = 0;
     	$scope.end = 10;

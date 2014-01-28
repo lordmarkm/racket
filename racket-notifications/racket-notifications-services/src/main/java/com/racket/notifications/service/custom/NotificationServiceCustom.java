@@ -1,6 +1,5 @@
 package com.racket.notifications.service.custom;
 
-import com.racket.commons.models.Racket;
 import com.racket.commons.models.Transaction;
 import com.racket.notifications.model.Notification;
 
@@ -9,6 +8,6 @@ import com.racket.notifications.model.Notification;
  */
 public interface  NotificationServiceCustom {
 
-    Notification compose(Racket racket, Transaction transaction);
+    Notification compose(Transaction transaction);
 
 }

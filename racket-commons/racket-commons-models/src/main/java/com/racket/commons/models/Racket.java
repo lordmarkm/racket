@@ -4,10 +4,14 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.google.common.collect.Lists;
 
 /**
  * @author mbmartinez
@@ -29,6 +33,9 @@ public class Racket extends AbstractEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Transaction> transactions;
+
+    @ElementCollection @CollectionTable(name = "racket_expense_classifications")
+    private List<String> expenseClassifications;
 
     public Racketeer getRacketeer() {
         return racketeer;
@@ -60,6 +67,17 @@ public class Racket extends AbstractEntity {
 
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
+    }
+
+    public List<String> getExpenseClassifications() {
+        if (this.expenseClassifications == null) {
+            this.expenseClassifications = Lists.newArrayList();
+        }
+        return expenseClassifications;
+    }
+
+    public void setExpenseClassifications(List<String> expenseClassifications) {
+        this.expenseClassifications = expenseClassifications;
     }
 
 }

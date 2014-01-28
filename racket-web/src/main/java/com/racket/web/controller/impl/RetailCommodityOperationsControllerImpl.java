@@ -75,7 +75,7 @@ public class RetailCommodityOperationsControllerImpl extends GenericController i
         racket.getTransactions().add(transaction);
         rackets.save(racket);
 
-        Notification notif = notifs.compose(commodity.getRacket(), transaction);
+        Notification notif = notifs.compose(transaction);
 		NotificationInfo dto = new NotificationInfo(notif);
 		
 		return new ResponseEntity<NotificationInfo>(dto, HttpStatus.OK);

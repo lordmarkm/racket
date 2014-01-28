@@ -17,11 +17,11 @@ public class NotificationServiceCustomImpl implements NotificationServiceCustom 
     private NotificationService notifs;
 
     @Override
-    public Notification compose(Racket racket, Transaction transaction) {
+    public Notification compose(Transaction transaction) {
 
         Notification notif = new Notification();
         notif.setMessage(transaction.getMessage());
-        notif.setRacket(racket);
+        notif.setRacket(transaction.getRacket());
 
         return notifs.save(notif);
     }
