@@ -1,10 +1,12 @@
 package com.racket.web.dto;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.apache.commons.lang.Validate;
 import org.joda.time.DateTime;
 
+import com.racket.commons.models.Image;
 import com.racket.commons.models.RacketCommodity;
 import com.racket.commons.models.support.ChargingMethod;
 import com.racket.commons.models.support.CommodityType;
@@ -73,5 +75,10 @@ public class RacketCommodityInfo {
 	}
 	public RoundUp getRoundUp() {
 	    return racketCommodity.getRentalDetails().getRoundUp();
+	}
+	
+	//images
+	public List<Image> getImages() {
+	    return racketCommodity.getImages();
 	}
 }

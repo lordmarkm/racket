@@ -105,3 +105,16 @@
   <button ng-click="submitEditCommodity()" class="btn btn-primary">Save</button>
   <button ng-click="done()" class="btn btn-success">Done</button>
 </div>
+
+<h1>Images</h1>
+{{commodity.images}}
+
+<div ng-repeat="image in commodity.images">
+  Yolo<img src="{{image.url}}s.jpg" />
+</div>
+
+<form ng-submit="addImage()">
+  Url: <input type="text" ng-model="newImage.url"/><br/>
+  Desc: <input type="text" ng-model="newImage.description"/>
+  <input type="submit" />
+</form>

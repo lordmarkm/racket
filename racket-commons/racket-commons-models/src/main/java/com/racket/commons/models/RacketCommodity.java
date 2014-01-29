@@ -1,16 +1,20 @@
 package com.racket.commons.models;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.baldy.commons.models.Commodity;
+import com.google.common.collect.Lists;
 import com.racket.commons.models.support.CommodityType;
 
 /**
@@ -40,6 +44,9 @@ public class RacketCommodity extends AbstractEntity implements Commodity {
 
     @Column
     private String unit;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Image> images;
 
     public CommodityType getType() {
         return type;
@@ -87,6 +94,17 @@ public class RacketCommodity extends AbstractEntity implements Commodity {
 
     public void setRetailDetails(RetailDetails retailDetails) {
         this.retailDetails = retailDetails;
+    }
+
+    public List<Image> getImages() {
+        if (null == images) {
+            images = Lists.newArrayList();
+        }
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 
 }
