@@ -16,6 +16,7 @@
     <module>racket-security</module>
     <module>racket-infra</module>
     <module>racket-notifications</module>
+    <module>racket-customer-portal</module>
   </modules>
 
   <properties>
