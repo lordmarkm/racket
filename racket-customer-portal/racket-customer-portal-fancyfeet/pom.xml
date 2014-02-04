@@ -8,5 +8,22 @@
   </parent>
   <groupId>racket-customer-portal-fancyfeet</groupId>
   <artifactId>racket-customer-portal-fancyfeet</artifactId>
-  <name>Racket :: Customer Portal :: FancyFeet</name>
+  <packaging>war</packaging>
+  <name>Racket :: Customer Portal :: Fancyfeet</name>
+  
+  <!--########################################## BUILD ########################################## -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+  </build>
 </project>

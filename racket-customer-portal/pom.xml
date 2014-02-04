@@ -11,7 +11,6 @@
   <packaging>pom</packaging>
   <name>Racket :: Customer Portal</name>
   <modules>
-  	<module>racket-customer-portal-default</module>
-  	<module>racket-customer-portal-fancyfeet</module>
+  <module>racket-customer-portal-fancyfeet</module>
   </modules>
 </project>
