@@ -1,1 +1,29 @@
-Hello, {{controllerName}}
+<div class="container">
+
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <p class="navbar-text">Call Us (02) 436-6001 | FAQ</p>
+</nav>
+
+<!-- Banner, Search bar, Bag -->
+<div class="row">
+  <div class="col-sm-4 pull-left">Fancy FEET</div>
+  <div class="col-sm-4 text-center">
+	  <form class="form form-horizontal">
+	    <div class="input-group">
+		    <input type="text" class="form-control" />
+		    <span class="input-group-btn">
+		      <button class="btn btn-success">Search</button>
+		    </span>
+	    </div>
+	  </form>
+  </div>
+  <div class="col-sm-4 pull-right text-right">
+    <a href="#">Bag</a>
+  </div>
+</div>
+
+<!-- Modules go here -->
+<ui-view></ui-view>
+
+</div>
