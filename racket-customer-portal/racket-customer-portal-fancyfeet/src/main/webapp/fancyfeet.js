@@ -16,14 +16,16 @@ require.config({
 
 require([
   'angular',
-  'angular-ui-router'
+  'angular-ui-router',
+  'browse/browse.module',
+  'bag/bag.module'
 ], function (angular) {
 
   angular.element().ready(function () {
 
     var main = angular.module('init', [])
       .config(['$stateProvider', function ($stateProvider) {
-        $stateProvider.state('main', {
+        $stateProvider.state('ff', {
           url: '/',
           controller: 'MainCtrl',
           templateUrl: 'fancyfeet.html'
@@ -36,7 +38,9 @@ require([
 
     angular.bootstrap(document, [
       'ui.router',
-      'init'
+      'init',
+      'browse.module',
+      'bag.module'
     ]);
   });
 });
