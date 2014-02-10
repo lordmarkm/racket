@@ -17,6 +17,7 @@
     <module>racket-infra</module>
     <module>racket-notifications</module>
     <module>racket-customer-portal</module>
+    <module>racket-customer-portal-support</module>
   </modules>
 
   <properties>
