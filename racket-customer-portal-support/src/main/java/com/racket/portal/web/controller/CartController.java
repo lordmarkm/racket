@@ -1,12 +1,11 @@
-package com.racket.web.controller;
+package com.racket.portal.web.controller;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
-import com.racket.commons.models.RacketCommodity;
+import com.racket.portal.web.session.ShoppingCart;
 
 /**
  * @author mbmartinez

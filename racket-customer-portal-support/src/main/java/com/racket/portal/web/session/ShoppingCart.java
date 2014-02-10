@@ -1,4 +1,4 @@
-package com.racket.web.session;
+package com.racket.portal.web.session;
 
 import java.util.Map;
 
