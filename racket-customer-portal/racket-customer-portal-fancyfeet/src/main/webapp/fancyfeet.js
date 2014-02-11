@@ -18,6 +18,7 @@ require([
   'angular',
   'angular-ui-router',
   'browse/browse.module',
+  'common/commons.module',
   'bag/bag.module'
 ], function (angular) {
 
@@ -40,6 +41,7 @@ require([
       'ui.router',
       'init',
       'browse.module',
+      'commons.module',
       'bag.module'
     ]);
   });

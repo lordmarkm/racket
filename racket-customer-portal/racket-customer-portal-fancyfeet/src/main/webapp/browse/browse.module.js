@@ -2,7 +2,8 @@ define(
   [
     'angular',
     'browse/controller/BrowseController',
-    'browse/controller/BrowseTypesCtrl'
+    'browse/controller/BrowseTypesCtrl',
+    'common/commons.module'
   ],
   function (angular, BrowseController, BrowseTypesCtrl) {
 

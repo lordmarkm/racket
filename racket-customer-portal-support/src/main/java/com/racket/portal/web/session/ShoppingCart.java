@@ -1,6 +1,7 @@
 package com.racket.portal.web.session;
 
-import java.util.Map;
+import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -12,14 +13,28 @@ import com.racket.commons.models.RacketCommodity;
 @Scope(WebApplicationContext.SCOPE_SESSION)
 public class ShoppingCart {
 
-    Map<Long, RacketCommodity> contents;
+    List<RacketCommodity> contents;
 
-    public Map<Long, RacketCommodity> getContents() {
+    public List<RacketCommodity> getContents() {
         return contents;
     }
 
-    public void setContents(Map<Long, RacketCommodity> contents) {
+    public void setContents(List<RacketCommodity> contents) {
         this.contents = contents;
     }
 
+    public ShoppingCart add(RacketCommodity commodity) {
+        contents.add(commodity);
+        return this;
+    }
+
+    public void remove(Long id) {
+        for (Iterator<RacketCommodity> i = contents.iterator(); i.hasNext();) {
+            RacketCommodity commodity = i.next();
+            if (commodity.getId() == id) {
+                i.remove();
+                return;
+            }
+        }
+    }
 }
