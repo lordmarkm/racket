@@ -13,7 +13,6 @@
     <dependency>
       <groupId>racket.commons</groupId>
       <artifactId>racket-commons-models</artifactId>
-      <version>${project.version}</version>
     </dependency>
   </dependencies>
   

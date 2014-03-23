@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -44,7 +46,8 @@ public class RacketNotificationsControllerImpl extends GenericController impleme
             @PathVariable int start, @PathVariable int end) {
 
     	Racket racket = rackets.findOne(id);
-        Pageable pageRequest = new PageRequest(start, end);
+    	Sort sort = new Sort(Direction.DESC, Notification.FIELD_DATE);
+        Pageable pageRequest = new PageRequest(start, end, sort);
         
         List<NotificationInfo> dtos = Lists.newArrayList();
         for (Notification notif : notifs.findByRacket(racket, pageRequest)) {

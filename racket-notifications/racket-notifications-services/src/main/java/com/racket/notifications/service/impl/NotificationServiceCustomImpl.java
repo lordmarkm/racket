@@ -2,7 +2,8 @@ package com.racket.notifications.service.impl;
 
 import javax.annotation.Resource;
 
-import com.racket.commons.models.Racket;
+import org.joda.time.DateTime;
+
 import com.racket.commons.models.Transaction;
 import com.racket.notifications.model.Notification;
 import com.racket.notifications.service.NotificationService;
@@ -22,6 +23,8 @@ public class NotificationServiceCustomImpl implements NotificationServiceCustom 
         Notification notif = new Notification();
         notif.setMessage(transaction.getMessage());
         notif.setRacket(transaction.getRacket());
+        notif.setTransaction(transaction);
+        notif.setDate(DateTime.now());
 
         return notifs.save(notif);
     }

@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 import org.joda.time.DateTime;
 
-import com.racket.commons.models.Racketeer;
 import com.racket.commons.models.TransactionAnnotation;
 
 /**

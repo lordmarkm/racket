@@ -37,7 +37,6 @@
 		<dependency>
 			<groupId>racket.commons</groupId>
 			<artifactId>racket-commons-services</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>racket-security</groupId>

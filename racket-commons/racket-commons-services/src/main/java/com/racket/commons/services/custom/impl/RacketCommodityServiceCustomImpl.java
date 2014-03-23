@@ -1,12 +1,16 @@
 package com.racket.commons.services.custom.impl;
 
+import static com.racket.commons.models.support.TransactionDetailType.COMMODITY_ID;
+import static com.racket.commons.models.support.TransactionDetailType.RENTAL_END;
+import static com.racket.commons.models.support.TransactionDetailType.RENTAL_START;
+import static com.racket.commons.services.utils.DateTimeUtil.getRoundedChargeableMinutes;
+
 import java.math.BigDecimal;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.joda.time.DateTime;
-import org.joda.time.Minutes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -14,11 +18,8 @@ import org.springframework.stereotype.Component;
 import com.racket.commons.models.RacketCommodity;
 import com.racket.commons.models.Transaction;
 import com.racket.commons.models.TransactionDetail;
-import com.racket.commons.services.RacketCommodityServiceCustom;
 import com.racket.commons.services.RacketCommodityService;
-
-import static com.racket.commons.models.support.TransactionDetailType.*;
-import static com.racket.commons.services.utils.DateTimeUtil.*;
+import com.racket.commons.services.RacketCommodityServiceCustom;
 
 /**
  * @author Mark

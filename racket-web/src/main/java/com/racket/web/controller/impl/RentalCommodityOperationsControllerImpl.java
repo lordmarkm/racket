@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.baldy.commons.web.controller.GenericController;
+import com.google.common.collect.Iterables;
 import com.racket.commons.models.Racket;
 import com.racket.commons.models.RacketCommodity;
 import com.racket.commons.models.Racketeer;
@@ -84,7 +85,8 @@ public class RentalCommodityOperationsControllerImpl extends GenericController i
         Racket racket = commodity.getRacket();
         transaction.setRacket(racket);
         racket.getTransactions().add(transaction);
-        rackets.save(racket);
+        racket = rackets.save(racket);
+        transaction = Iterables.getLast(racket.getTransactions());
 
         Notification notif = notifs.compose(transaction);
         NotificationInfo dto = new NotificationInfo(notif);

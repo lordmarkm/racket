@@ -44,25 +44,6 @@ define(['/javascript/controllers/module.js'], function (controllers) {
     		  }
     	  });
       }
-      
-      $scope.classifications = [];
-      $http.get('/racket/expenses/classifications/' + $scope.racketId).success(function(classifications) {
-    	 $scope.classifications = classifications; 
-      });
-      
-      $scope.newExpense = {};
-      $scope.submitNewExpense = function() {
-    	  if ($scope.newExpense.newClassification && $scope.newExpense.newClassification != $scope.newExpense.classification) {
-    		  $scope.classifications.push($scope.newExpense.newClassification);
-    		  $scope.newExpense.classification = $scope.newExpense.newClassification;
-    		  delete $scope.newExpense.newClassification;
-    	  }
-    	  console.debug('About to submit new expense: ' + JSON.stringify($scope.newExpense));
-    	  $http.post('/racket/expenses/' + $scope.racketId, this.newExpense).success(function(notif) {
-    		  $scope.notif = notif;
-    		  $scope.newExpense = {};
-    	  });    	  
-      }
   }]);
   
 });

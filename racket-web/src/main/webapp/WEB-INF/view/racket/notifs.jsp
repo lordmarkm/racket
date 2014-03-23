@@ -6,6 +6,10 @@
   
   <h4>Notifications</h4>
   
+  <div class="alert alert-info" ng-repeat="notif in notifs">
+    {{notif.message}}
+  </div>
+  
   <ul>
     <li ng-repeat="notif in notifs">
       {{notif.message}}

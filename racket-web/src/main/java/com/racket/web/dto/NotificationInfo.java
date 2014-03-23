@@ -1,6 +1,5 @@
 package com.racket.web.dto;
 
-import com.racket.commons.models.Racket;
 import com.racket.notifications.model.Notification;
 
 /**
