@@ -1,74 +1,74 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<artifactId>racket</artifactId>
-		<groupId>racket</groupId>
-		<version>1.0</version>
-		<relativePath>..</relativePath>
-	</parent>
+  <parent>
+    <artifactId>racket</artifactId>
+    <groupId>racket</groupId>
+    <version>1.0</version>
+    <relativePath>..</relativePath>
+  </parent>
 
-	<groupId>racket-web</groupId>
-	<artifactId>racket-web</artifactId>
-	<packaging>war</packaging>
-	<name>Racket :: Web</name>
+  <groupId>racket-web</groupId>
+  <artifactId>racket-web</artifactId>
+  <packaging>war</packaging>
+  <name>Racket :: Web</name>
 
-	<dependencies>
-		<dependency>
-			<groupId>baldy.commons.web</groupId>
-			<artifactId>baldy-commons-web</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>baldy.commons.security</groupId>
-			<artifactId>baldy-commons-security-services</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+  <dependencies>
+    <dependency>
+      <groupId>baldy.commons.web</groupId>
+      <artifactId>baldy-commons-web</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>baldy.commons.security</groupId>
+      <artifactId>baldy-commons-security-services</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 
-		<!-- ASPECTJ -->
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-		</dependency>
+    <!-- ASPECTJ -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+    </dependency>
 
-		<!-- Project -->
-		<dependency>
-			<groupId>racket.commons</groupId>
-			<artifactId>racket-commons-services</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>racket-security</groupId>
-			<artifactId>racket-security</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>racket-notifications</groupId>
-			<artifactId>racket-notifications-models</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>racket-notifications</groupId>
-			<artifactId>racket-notifications-services</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+    <!-- Project -->
+    <dependency>
+      <groupId>racket.commons</groupId>
+      <artifactId>racket-commons-services</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>racket-security</groupId>
+      <artifactId>racket-security</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>racket-notifications</groupId>
+      <artifactId>racket-notifications-models</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>racket-notifications</groupId>
+      <artifactId>racket-notifications-services</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 
-	</dependencies>
+  </dependencies>
 
-	<!--########################################## BUILD ########################################## -->
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-	</build>
+  <!--########################################## BUILD ########################################## -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+  </build>
 </project>
